@@ -21,7 +21,7 @@ export default function WelcomeScreen({navigation}){
           <View style={styles.logoContainer}>
             <View style={styles.logoCircle}>
               {/* You can replace this with your actual logo SVG or image */}
-              <Image source={require("../logo/wil_logo.jpg")} style={styles.logoCircle} />
+              <Image source={require("../logo/wil_logo_amended2.jpg")} style={styles.logoCircle} />
             </View>
           </View>
 
@@ -44,7 +44,7 @@ export default function WelcomeScreen({navigation}){
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               style={styles.signUpButton}
-             onPress={() => navigation.navigate('Signup')}
+             onPress={() => navigation.navigate('sixweekcourses')}
               activeOpacity={0.8}
             >
               <Text style={styles.buttonText}>Sign Up</Text>
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   signUpButton: {
-    backgroundColor: '#16697A',
+    backgroundColor: '#004D4D',
     paddingVertical: 18,
     borderRadius: 12,
     marginBottom: 16,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   logInButton: {
-    backgroundColor: '#16697A',
+    backgroundColor: '#004D4D',
     paddingVertical: 18,
     borderRadius: 12,
     marginBottom: 20,

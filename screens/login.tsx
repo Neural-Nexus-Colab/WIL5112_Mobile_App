@@ -39,7 +39,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
   return (
     <LinearGradient
-      colors={['#6BC8C3', '#5fd3cdff', '#C6E2FC']}
+      colors={['#6BC8C3', '#C6E2FC']}
       style={styles.gradient}
     >
       <SafeAreaView style={styles.safeArea}>

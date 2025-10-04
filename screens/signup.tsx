@@ -42,7 +42,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
 
   return (
     <LinearGradient
-      colors={['#4DB8C4', '#7DD3DB', '#A8DDE3']}
+      colors={['#6BC8C3', '#C6E2FC']}
       style={styles.gradient}
     >
       <SafeAreaView style={styles.safeArea}>
