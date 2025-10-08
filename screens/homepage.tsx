@@ -1,19 +1,19 @@
-import React from 'react';
-import { 
-  View, 
-  Text, 
-  TouchableOpacity, 
+import React from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
   StyleSheet,
   SafeAreaView,
   ScrollView,
-  Image
-} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+  Image,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
-export default function HomeScreen({ navigation }){
+export default function HomeScreen({ navigation }) {
   const handleMenuPress = () => {
-    console.log('Menu pressed');
+    console.log("Menu pressed");
     // Open menu drawer
   };
 
@@ -22,19 +22,16 @@ export default function HomeScreen({ navigation }){
   };
 
   return (
-    <LinearGradient
-      colors={['#55c8c2ff', '#C6E2FC']}
-      style={styles.container}
-    >
+    <LinearGradient colors={["#55c8c2ff", "#C6E2FC"]} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.innerContainer}>
-          <ScrollView 
+          <ScrollView
             contentContainerStyle={styles.scrollContent}
             showsVerticalScrollIndicator={false}
           >
             {/* Header with Logo and Menu */}
             <View style={styles.headerContainer}>
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.menuButton}
                 onPress={handleMenuPress}
                 activeOpacity={0.7}
@@ -50,73 +47,91 @@ export default function HomeScreen({ navigation }){
             {/* Logo Section */}
             <View style={styles.logoContainer}>
               <View style={styles.logoCircle}>
-                <Image source = {require('../logo/wil_logo_amended2.jpg')} style={styles.logoCircle}/>
+                <Image
+                  source={require("../logo/wil_logo_amended2.jpg")}
+                  style={styles.logoCircle}
+                />
               </View>
             </View>
 
             {/* Title Section */}
             <View style={styles.titleSection}>
               <Text style={styles.mainTitle}>Empowering the Nation</Text>
-              <Text style={styles.subtitle}>Building Skills, Building Futures</Text>
+              <Text style={styles.subtitle}>
+                Building Skills, Building Futures
+              </Text>
             </View>
 
             {/* Description Card */}
             <View style={styles.descriptionCard}>
               <Text style={styles.descriptionText}>
-                Empowering the Nation specializes in providing high-quality skills development 
-                programs that are high-quality skills development programs that prepare 
-                individuals for meaningful employment and entrepreneurship. Our courses 
-                are designed to be practical, accessible and industry relevant.
+                Empowering the Nation specializes in providing high-quality
+                skills development programs that are high-quality skills
+                development programs that prepare individuals for meaningful
+                employment and entrepreneurship. Our courses are designed to be
+                practical, accessible and industry relevant.
               </Text>
             </View>
 
             {/* Navigation Buttons */}
             <View style={styles.buttonsContainer}>
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.navButton}
-                onPress={() => handleNavigation('')}
+                onPress={() => handleNavigation("monthcourses")}
                 activeOpacity={0.85}
               >
                 <LinearGradient
-                   colors={["#004D4D", "#006666"]}
+                  colors={["#004D4D", "#006666"]}
                   style={styles.buttonGradient}
                 >
-                  <MaterialCommunityIcons name="file-document-outline" size={24} color="#FFFFFF" />
+                  <MaterialCommunityIcons
+                    name="file-document-outline"
+                    size={24}
+                    color="#FFFFFF"
+                  />
                   <Text style={styles.buttonText}>Six Month Courses</Text>
                 </LinearGradient>
               </TouchableOpacity>
 
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.navButton}
-                onPress={() => handleNavigation('sixweekcourses')}
+                onPress={() => handleNavigation("sixweekcourses")}
                 activeOpacity={0.85}
               >
                 <LinearGradient
                   colors={["#004D4D", "#006666"]}
                   style={styles.buttonGradient}
                 >
-                  <MaterialCommunityIcons name="book-open-variant" size={24} color="#FFFFFF" />
+                  <MaterialCommunityIcons
+                    name="book-open-variant"
+                    size={24}
+                    color="#FFFFFF"
+                  />
                   <Text style={styles.buttonText}>Six Week Courses</Text>
                 </LinearGradient>
               </TouchableOpacity>
 
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.navButton}
-                onPress={() => handleNavigation('calc')}
+                onPress={() => handleNavigation("calc")}
                 activeOpacity={0.85}
               >
                 <LinearGradient
                   colors={["#004D4D", "#006666"]}
                   style={styles.buttonGradient}
                 >
-                  <MaterialCommunityIcons name="calculator" size={24} color="#FFFFFF" />
+                  <MaterialCommunityIcons
+                    name="calculator"
+                    size={24}
+                    color="#FFFFFF"
+                  />
                   <Text style={styles.buttonText}>Calculate fees</Text>
                 </LinearGradient>
               </TouchableOpacity>
 
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.navButton}
-                onPress={() => handleNavigation('')}
+                onPress={() => handleNavigation("")}
                 activeOpacity={0.85}
               >
                 <LinearGradient
@@ -132,27 +147,31 @@ export default function HomeScreen({ navigation }){
 
           {/* Bottom Navigation */}
           <View style={styles.bottomNav}>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.navItem}
-              onPress={() => handleNavigation('home')}
+              onPress={() => handleNavigation("home")}
               activeOpacity={0.7}
             >
               <Ionicons name="home-outline" size={24} color="#4B5563" />
               <Text style={styles.navLabel}>Home</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.navItem}
-              onPress={() => handleNavigation('calc')}
+              onPress={() => handleNavigation("calc")}
               activeOpacity={0.7}
             >
-              <MaterialCommunityIcons name="calculator" size={24} color="#4B5563" />
+              <MaterialCommunityIcons
+                name="calculator"
+                size={24}
+                color="#4B5563"
+              />
               <Text style={styles.navLabel}>Calculator</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.navItem}
-              onPress={() => handleNavigation('')}
+              onPress={() => handleNavigation("")}
               activeOpacity={0.7}
             >
               <Ionicons name="call-outline" size={24} color="#4B5563" />
@@ -163,7 +182,7 @@ export default function HomeScreen({ navigation }){
       </SafeAreaView>
     </LinearGradient>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -179,8 +198,8 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
   },
   headerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    flexDirection: "row",
+    justifyContent: "flex-end",
     paddingHorizontal: 20,
     paddingTop: 10,
     paddingBottom: 10,
@@ -195,11 +214,11 @@ const styles = StyleSheet.create({
   menuLine: {
     width: 30,
     height: 3,
-    backgroundColor: '#2C3E50',
+    backgroundColor: "#2C3E50",
     borderRadius: 2,
   },
   logoContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 20,
     marginBottom: 30,
   },
@@ -207,10 +226,10 @@ const styles = StyleSheet.create({
     width: 140,
     height: 140,
     borderRadius: 70,
-    backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
+    backgroundColor: "#FFFFFF",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 6,
@@ -223,31 +242,31 @@ const styles = StyleSheet.create({
     fontSize: 70,
   },
   titleSection: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingHorizontal: 32,
     marginBottom: 30,
   },
   mainTitle: {
     fontSize: 36,
-    fontWeight: 'bold',
-    color: '#2C3E50',
-    textAlign: 'center',
+    fontWeight: "bold",
+    color: "#2C3E50",
+    textAlign: "center",
     marginBottom: 8,
     letterSpacing: -0.5,
   },
   subtitle: {
     fontSize: 18,
-    color: '#4B5563',
-    textAlign: 'center',
-    fontWeight: '500',
+    color: "#4B5563",
+    textAlign: "center",
+    fontWeight: "500",
   },
   descriptionCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
     marginHorizontal: 30,
     borderRadius: 20,
     padding: 24,
     marginBottom: 30,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 6,
@@ -258,8 +277,8 @@ const styles = StyleSheet.create({
   },
   descriptionText: {
     fontSize: 16,
-    color: '#4B5563',
-    textAlign: 'center',
+    color: "#4B5563",
+    textAlign: "center",
     lineHeight: 24,
   },
   buttonsContainer: {
@@ -268,8 +287,8 @@ const styles = StyleSheet.create({
   },
   navButton: {
     borderRadius: 12,
-    overflow: 'hidden',
-    shadowColor: '#16697A',
+    overflow: "hidden",
+    shadowColor: "#16697A",
     shadowOffset: {
       width: 0,
       height: 4,
@@ -279,30 +298,30 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
   buttonGradient: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 18,
     paddingHorizontal: 20,
     gap: 12,
   },
   buttonText: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   bottomNav: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    flexDirection: 'row',
-    backgroundColor: '#FFFFFF',
+    flexDirection: "row",
+    backgroundColor: "#FFFFFF",
     paddingVertical: 12,
     paddingBottom: 20,
     borderTopWidth: 1,
-    borderTopColor: '#E5E7EB',
-    shadowColor: '#000',
+    borderTopColor: "#E5E7EB",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: -2,
@@ -313,13 +332,13 @@ const styles = StyleSheet.create({
   },
   navItem: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   navLabel: {
     fontSize: 12,
-    color: '#4B5563',
-    fontWeight: '600',
+    color: "#4B5563",
+    fontWeight: "600",
     marginTop: 4,
   },
 });

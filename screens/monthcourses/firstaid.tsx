@@ -11,16 +11,16 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
-export default function ChildMindingCourseDetailScreen({ navigation }) {
+export default function FirstAidCourseDetailScreen({ navigation }) {
   const contentItems = [
-    "Parental guidance skills",
-    "Positive disciplinary techniques",
-    "Child interaction skills",
-    "Setting boundaries positively",
-    "Child Psychology",
-    "Child health & Safety",
-    "Child support skills",
-    "Running daycare skills",
+    "Clinical Skills",
+    "Patient Communication",
+    "Wound Care",
+    "Bleeding Control",
+    "Burns & Sprains Treatment",
+    "Fracture Treatment",
+    "Stroke Recognition",
+    "CPR(Cardiopulmonary Resuscitation)",
   ];
 
   const handleBackPress = () => {
@@ -33,7 +33,7 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
 
   const handleNext = () => {
     console.log("Next pressed");
-    navigation.navigate("garden");
+    navigation.navigate("");
   };
 
   const handleNavigation = (screen: string) => {
@@ -55,7 +55,7 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
                      </TouchableOpacity>
 
             <Text style={styles.headerTitle}>
-              Explore the{"\n"}Child Minding Course
+              Explore the{"\n"}First-Aid Course
             </Text>
 
             <TouchableOpacity
@@ -78,7 +78,7 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
             {/* Course Image */}
             <View style={styles.imageContainer}>
               <Image
-                source={require("../../weekcourseimages/childmindingimg.jpeg")}
+                source={require("../../monthcoursesimages/firstaidcourse.jpeg")}
                 style={styles.courseImage}
                 resizeMode="cover"
               />
@@ -104,7 +104,7 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
                 </Text>
               </View>
 
-              <Text style={styles.price}>R750</Text>
+              <Text style={styles.price}>R1500</Text>
             </View>
 
             {/* Next Button */}

@@ -18,25 +18,31 @@ interface Course {
 }
 
 
-export default function SixWeekCoursesScreen ({ navigation })  {
+export default function SixMonthCoursesScreen ({ navigation })  {
   const courses: Course[] = [
     {
-      id: 'cooking',
-      title: 'Cooking Course',
-      description: 'Master culinary arts and food safety with professional techniques from organizing and preparing ingredients to menu planning and meal composition.',
-      price: 'R750'
+      id: 'firstaid',
+      title: 'First Aid Course',
+      description: 'Essential life-saving skills for emergencies. Learn to handle critical situations effectively.',
+      price: 'R1500'
     },
     {
-      id: 'childmind',
-      title: 'Child Minding Course',
-      description: 'Professional childcare training focusing on child development, safety and effective interaction.',
-      price: 'R750'
+      id: 'sewing',
+      title: 'Sewing Course',
+      description: 'Master professional tailoring skills and garment construction from basic stitching to crocheting.',
+      price: 'R1500'
     },
     {
-      id: 'garden',
-      title: 'Garden maintenance Course',
-      description: 'Basic garden care and upkeep, including horticultural techniques, plant identifications and practical gardening skills.',
-      price: 'R750'
+      id: 'landscaping',
+      title: 'Landscaping Course',
+      description: 'Design and maintenance beautiful and functional outdoor and spaces with practical gardening.',
+      price: 'R1500'
+    },
+    {
+      id: 'life',
+      title: 'Life Skills Course',
+      description: 'Develop crucial professional and personal skills for growth, career advancement and for your daily life.',
+      price: 'R1500'
     }
   ];
 
@@ -67,13 +73,13 @@ export default function SixWeekCoursesScreen ({ navigation })  {
         <View style={styles.innerContainer}>
           {/* Header */}
           <View style={styles.header}>
-               <TouchableOpacity
-                        style={styles.backButton}
-                        onPress={handleBackPress}
-                        activeOpacity={0.7}
-                      >
-                        <Ionicons name="arrow-back" size={24} color="#2C3E50" />
-                      </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.backButton}
+                    onPress={handleBackPress}
+                    activeOpacity={0.7}
+                  >
+                    <Ionicons name="arrow-back" size={24} color="#2C3E50" />
+                  </TouchableOpacity>
 
             <TouchableOpacity 
               style={styles.menuButton}
@@ -90,7 +96,7 @@ export default function SixWeekCoursesScreen ({ navigation })  {
 
           {/* Title */}
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Six Week Courses</Text>
+            <Text style={styles.title}>Six Month Courses</Text>
           </View>
 
           {/* Courses List */}
@@ -175,16 +181,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 10,
+    marginTop: 30,
   },
   backButton: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginTop : 30,
-    backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
+    width: 45,
+    height: 45,
+    borderRadius: 22.5,
+    backgroundColor: "#FFFFFF",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -193,22 +199,16 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-  backIcon: {
-    fontSize: 28,
-    color: '#2C3E50',
-    fontWeight: 'bold',
-  },
   menuButton: {
     padding: 10,
-    marginTop:30
   },
   menuIcon: {
-    gap: 6,
+    gap: 5,
   },
   menuLine: {
-    width: 30,
+    width: 25,
     height: 3,
-    backgroundColor: '#2C3E50',
+    backgroundColor: "#2C3E50",
     borderRadius: 2,
   },
   titleContainer: {

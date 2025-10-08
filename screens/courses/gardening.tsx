@@ -1,27 +1,26 @@
-import React from 'react';
-import { 
-  View, 
-  Text, 
-  TouchableOpacity, 
+import React from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
   StyleSheet,
   SafeAreaView,
   ScrollView,
-  Image
-} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
-
+  Image,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 export default function GardenMaintenanceDetailScreen({ navigation }) {
   const contentItems = [
-    'Plant growth cycle skills',
-    'Soil types identification',
-    'Potential of Hydrogen Testing',
-    'Fertilization techniques',
-    'Plant watering techniques',
-    'Garden tools safety',
-    'Plant Weeding Techniques',
-    'Mowing techniques'
+    "Plant growth cycle skills",
+    "Soil types identification",
+    "Potential of Hydrogen Testing",
+    "Fertilization techniques",
+    "Plant watering techniques",
+    "Garden tools safety",
+    "Plant Weeding Techniques",
+    "Mowing techniques",
   ];
 
   const handleBackPress = () => {
@@ -29,12 +28,12 @@ export default function GardenMaintenanceDetailScreen({ navigation }) {
   };
 
   const handleMenuPress = () => {
-    console.log('Menu pressed');
+    console.log("Menu pressed");
   };
 
   const handleNext = () => {
-    console.log('Next pressed');
-    navigation.navigate('sixweekcourses')
+    console.log("Next pressed");
+    navigation.navigate("sixweekcourses");
   };
 
   const handleNavigation = (screen: string) => {
@@ -42,25 +41,24 @@ export default function GardenMaintenanceDetailScreen({ navigation }) {
   };
 
   return (
-    <LinearGradient
-      colors={['#55c8c2ff', '#C6E2FC']}
-      style={styles.container}
-    >
+    <LinearGradient colors={["#55c8c2ff", "#C6E2FC"]} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.innerContainer}>
           {/* Header */}
           <View style={styles.header}>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.backButton}
               onPress={handleBackPress}
               activeOpacity={0.7}
             >
-              <Text style={styles.backIcon}>←</Text>
+              <Ionicons name="arrow-back" size={24} color="#2C3E50" />
             </TouchableOpacity>
 
-            <Text style={styles.headerTitle}>Explore the{'\n'}Garden Maintenance Course</Text>
+            <Text style={styles.headerTitle}>
+              Explore the{"\n"}Garden Maintenance Course
+            </Text>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.menuButton}
               onPress={handleMenuPress}
               activeOpacity={0.7}
@@ -73,21 +71,22 @@ export default function GardenMaintenanceDetailScreen({ navigation }) {
             </TouchableOpacity>
           </View>
 
-          <ScrollView 
+          <ScrollView
             contentContainerStyle={styles.scrollContent}
             showsVerticalScrollIndicator={false}
           >
             {/* Course Image */}
             <View style={styles.imageContainer}>
-             
-            <Image source={require('../../weekcourseimages/gardenimg.jpeg')} style={styles.imagePlaceholder} />    
-          
+              <Image
+                source={require("../../weekcourseimages/gardenimg.jpeg")}
+                style={styles.imagePlaceholder}
+              />
             </View>
 
             {/* Content Card */}
             <View style={styles.contentCard}>
               <Text style={styles.sectionTitle}>The Content includes:</Text>
-              
+
               <View style={styles.listContainer}>
                 {contentItems.map((item, index) => (
                   <View key={index} style={styles.listItem}>
@@ -108,13 +107,13 @@ export default function GardenMaintenanceDetailScreen({ navigation }) {
             </View>
 
             {/* Next Button */}
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.nextButton}
               onPress={handleNext}
               activeOpacity={0.85}
             >
               <LinearGradient
-            colors={['#004D4D', '#006666']}
+                colors={["#004D4D", "#006666"]}
                 style={styles.buttonGradient}
               >
                 <Text style={styles.nextButtonText}>Next</Text>
@@ -122,29 +121,33 @@ export default function GardenMaintenanceDetailScreen({ navigation }) {
             </TouchableOpacity>
           </ScrollView>
 
-         {/* Bottom Navigation */}
+          {/* Bottom Navigation */}
           <View style={styles.bottomNav}>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.navItem}
-              onPress={() => handleNavigation('home')}
+              onPress={() => handleNavigation("home")}
               activeOpacity={0.7}
             >
               <Ionicons name="home-outline" size={24} color="#4B5563" />
               <Text style={styles.navLabel}>Home</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.navItem}
-              onPress={() => handleNavigation('calc')}
+              onPress={() => handleNavigation("calc")}
               activeOpacity={0.7}
             >
-              <MaterialCommunityIcons name="calculator" size={24} color="#4B5563" />
+              <MaterialCommunityIcons
+                name="calculator"
+                size={24}
+                color="#4B5563"
+              />
               <Text style={styles.navLabel}>Calculator</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.navItem}
-              onPress={() => handleNavigation('')}
+              onPress={() => handleNavigation("")}
               activeOpacity={0.7}
             >
               <Ionicons name="call-outline" size={24} color="#4B5563" />
@@ -155,7 +158,7 @@ export default function GardenMaintenanceDetailScreen({ navigation }) {
       </SafeAreaView>
     </LinearGradient>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -168,9 +171,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 20,
     paddingVertical: 15,
     marginTop: 30,
@@ -179,10 +182,10 @@ const styles = StyleSheet.create({
     width: 45,
     height: 45,
     borderRadius: 22.5,
-    backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
+    backgroundColor: "#FFFFFF",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -193,14 +196,14 @@ const styles = StyleSheet.create({
   },
   backIcon: {
     fontSize: 24,
-    color: '#2C3E50',
-    fontWeight: 'bold',
+    color: "#2C3E50",
+    fontWeight: "bold",
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#2C3E50',
-    textAlign: 'center',
+    fontWeight: "bold",
+    color: "#2C3E50",
+    textAlign: "center",
     flex: 1,
     marginHorizontal: 10,
   },
@@ -213,7 +216,7 @@ const styles = StyleSheet.create({
   menuLine: {
     width: 25,
     height: 3,
-    backgroundColor: '#2C3E50',
+    backgroundColor: "#2C3E50",
     borderRadius: 2,
   },
   scrollContent: {
@@ -225,13 +228,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   imagePlaceholder: {
-    width: '100%',
+    width: "100%",
     height: 200,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderRadius: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 4,
@@ -244,11 +247,11 @@ const styles = StyleSheet.create({
     fontSize: 80,
   },
   contentCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
     borderRadius: 20,
     padding: 24,
     marginBottom: 20,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 6,
@@ -257,30 +260,30 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
     elevation: 8,
     borderLeftWidth: 5,
-    borderLeftColor: '#16697A',
+    borderLeftColor: "#16697A",
   },
   sectionTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#2C3E50',
+    fontWeight: "bold",
+    color: "#2C3E50",
     marginBottom: 16,
   },
   listContainer: {
     marginBottom: 20,
   },
   listItem: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 10,
   },
   bullet: {
     fontSize: 16,
-    color: '#2C3E50',
+    color: "#2C3E50",
     marginRight: 10,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   listText: {
     fontSize: 16,
-    color: '#4B5563',
+    color: "#4B5563",
     flex: 1,
     lineHeight: 22,
   },
@@ -290,26 +293,26 @@ const styles = StyleSheet.create({
   },
   certificationTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: '#2C3E50',
+    fontWeight: "bold",
+    color: "#2C3E50",
     marginBottom: 8,
   },
   certificationText: {
     fontSize: 15,
-    color: '#4B5563',
+    color: "#4B5563",
     lineHeight: 22,
   },
   price: {
     fontSize: 32,
-    fontWeight: 'bold',
-    color: '#B8860B',
-    textAlign: 'right',
+    fontWeight: "bold",
+    color: "#B8860B",
+    textAlign: "right",
   },
   nextButton: {
     borderRadius: 12,
-    overflow: 'hidden',
+    overflow: "hidden",
     marginBottom: 20,
-    shadowColor: '#16697A',
+    shadowColor: "#16697A",
     shadowOffset: {
       width: 0,
       height: 4,
@@ -320,25 +323,25 @@ const styles = StyleSheet.create({
   },
   buttonGradient: {
     paddingVertical: 16,
-    alignItems: 'center',
+    alignItems: "center",
   },
   nextButtonText: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   bottomNav: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    flexDirection: 'row',
-    backgroundColor: '#FFFFFF',
+    flexDirection: "row",
+    backgroundColor: "#FFFFFF",
     paddingVertical: 12,
     paddingBottom: 20,
     borderTopWidth: 1,
-    borderTopColor: '#E5E7EB',
-    shadowColor: '#000',
+    borderTopColor: "#E5E7EB",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: -2,
@@ -349,8 +352,8 @@ const styles = StyleSheet.create({
   },
   navItem: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   navIcon: {
     fontSize: 24,
@@ -358,7 +361,7 @@ const styles = StyleSheet.create({
   },
   navLabel: {
     fontSize: 12,
-    color: '#4B5563',
-    fontWeight: '600',
+    color: "#4B5563",
+    fontWeight: "600",
   },
 });
