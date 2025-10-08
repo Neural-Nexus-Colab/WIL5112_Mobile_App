@@ -9,6 +9,7 @@ import {
   ScrollView
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 interface Course {
   name: string;
@@ -118,7 +119,7 @@ const CourseFeeCalculationScreen: React.FC<CourseFeeCalculationProps> = ({ navig
 
   return (
     <LinearGradient
-      colors={['#4DB8C4', '#7DD3DB', '#A8DDE3']}
+      colors={["#55c8c2ff", "#C6E2FC"]} 
       style={styles.container}
     >
       <SafeAreaView style={styles.safeArea}>
@@ -130,7 +131,7 @@ const CourseFeeCalculationScreen: React.FC<CourseFeeCalculationProps> = ({ navig
               onPress={handleBackPress}
               activeOpacity={0.7}
             >
-              <Text style={styles.backIcon}>←</Text>
+              <Ionicons name="arrow-back" size={24} color="#2C3E50" />
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -212,7 +213,9 @@ const CourseFeeCalculationScreen: React.FC<CourseFeeCalculationProps> = ({ navig
                 >
                   <View style={styles.checkboxContainer}>
                     <View style={[styles.checkbox, selectedCourses[courseName] && styles.checkboxChecked]}>
-                      {selectedCourses[courseName] && <Text style={styles.checkmark}>✓</Text>}
+                      {selectedCourses[courseName] && (
+                        <Ionicons name="checkmark" size={18} color="#FFFFFF" />
+                      )}
                     </View>
                     <Text style={styles.courseName}>{courseName}</Text>
                   </View>
@@ -278,7 +281,7 @@ const CourseFeeCalculationScreen: React.FC<CourseFeeCalculationProps> = ({ navig
               activeOpacity={0.85}
             >
               <LinearGradient
-                colors={['#004D4D', '#006666']}
+                 colors={["#004D4D", "#006666"]}
                 style={styles.buttonGradient}
               >
                 <Text style={styles.buttonText}>Ready to Enroll</Text>
@@ -290,10 +293,10 @@ const CourseFeeCalculationScreen: React.FC<CourseFeeCalculationProps> = ({ navig
           <View style={styles.bottomNav}>
             <TouchableOpacity 
               style={styles.navItem}
-              onPress={() => handleNavigation('Home')}
+              onPress={() => handleNavigation('home')}
               activeOpacity={0.7}
             >
-              <Text style={styles.navIcon}>🏠</Text>
+              <Ionicons name="home-outline" size={24} color="#4B5563" />
               <Text style={styles.navLabel}>Home</Text>
             </TouchableOpacity>
 
@@ -302,8 +305,8 @@ const CourseFeeCalculationScreen: React.FC<CourseFeeCalculationProps> = ({ navig
               onPress={() => handleNavigation('calc')}
               activeOpacity={0.7}
             >
-              <Text style={styles.navIcon}>👤</Text>
-              <Text style={styles.navLabel}>Account</Text>
+              <MaterialCommunityIcons name="calculator" size={24} color="#4B5563" />
+              <Text style={styles.navLabel}>Calculator</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -311,7 +314,7 @@ const CourseFeeCalculationScreen: React.FC<CourseFeeCalculationProps> = ({ navig
               onPress={() => handleNavigation('Contact')}
               activeOpacity={0.7}
             >
-              <Text style={styles.navIcon}>📞</Text>
+              <Ionicons name="call-outline" size={24} color="#4B5563" />
               <Text style={styles.navLabel}>Contact</Text>
             </TouchableOpacity>
           </View>
@@ -354,11 +357,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
-  },
-  backIcon: {
-    fontSize: 24,
-    color: '#2C3E50',
-    fontWeight: 'bold',
   },
   menuButton: {
     padding: 10,
@@ -468,11 +466,6 @@ const styles = StyleSheet.create({
   checkboxChecked: {
     backgroundColor: '#2C3E50',
     borderColor: '#2C3E50',
-  },
-  checkmark: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold',
   },
   courseName: {
     fontSize: 16,
@@ -595,14 +588,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  navIcon: {
-    fontSize: 24,
-    marginBottom: 4,
-  },
   navLabel: {
     fontSize: 12,
     color: '#4B5563',
     fontWeight: '600',
+    marginTop: 4,
   },
 });
 

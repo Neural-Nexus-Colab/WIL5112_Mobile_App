@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
@@ -6,22 +6,22 @@ import {
   StyleSheet,
   SafeAreaView,
   Image,
-} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
-export default function WelcomeScreen({navigation}){
+export default function WelcomeScreen({ navigation }) {
   return (
-    <LinearGradient
-      colors={['#6BC8C3', '#C6E2FC']}
-      style={styles.container}
-    >
+    <LinearGradient colors={["#55c8c2ff", "#C6E2FC"]} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.content}>
           {/* Logo Section */}
           <View style={styles.logoContainer}>
             <View style={styles.logoCircle}>
               {/* You can replace this with your actual logo SVG or image */}
-              <Image source={require("../logo/wil_logo_amended2.jpg")} style={styles.logoCircle} />
+              <Image
+                source={require("../logo/wil_logo_amended2.jpg")}
+                style={styles.logoCircle}
+              />
             </View>
           </View>
 
@@ -33,7 +33,7 @@ export default function WelcomeScreen({navigation}){
 
           {/* Subtitle */}
           <Text style={styles.subtitle}>
-            Building Skills, Building Futures -{'\n'}
+            Building Skills, Building Futures -{"\n"}
             Your journey starts here.
           </Text>
 
@@ -44,22 +44,36 @@ export default function WelcomeScreen({navigation}){
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               style={styles.signUpButton}
-             onPress={() => navigation.navigate('calc')}
+              onPress={() => navigation.navigate("Signup")}
               activeOpacity={0.8}
             >
-              <Text style={styles.buttonText}>Sign Up</Text>
+              <LinearGradient
+                colors={["#004D4D", "#006666"]}
+                style={styles.buttonGradient}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+              >
+                <Text style={styles.buttonText}>Sign Up</Text>
+              </LinearGradient>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.logInButton}
-          onPress={() => navigation.navigate('Login')}
+              onPress={() => navigation.navigate("Login")}
               activeOpacity={0.8}
             >
-              <Text style={styles.buttonText}>Log in</Text>
+              <LinearGradient
+                colors={["#004D4D", "#006666"]}
+                style={styles.buttonGradient}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+              >
+                <Text style={styles.buttonText}>Log in</Text>
+              </LinearGradient>
             </TouchableOpacity>
 
             <TouchableOpacity
-            
+              onPress={() => navigation.navigate("home")}
               activeOpacity={0.7}
             >
               <Text style={styles.guestText}>
@@ -70,14 +84,14 @@ export default function WelcomeScreen({navigation}){
 
           {/* Terms and Conditions */}
           <Text style={styles.termsText}>
-            By signing up, I agree to the Terms and Conditions{'\n'}
+            By signing up, I agree to the Terms and Conditions{"\n"}
             and Privacy Policy.
           </Text>
         </View>
       </SafeAreaView>
     </LinearGradient>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -145,32 +159,34 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   signUpButton: {
-    backgroundColor: '#004D4D',
-    paddingVertical: 18,
     borderRadius: 12,
+    overflow: 'hidden',
     marginBottom: 16,
-    shadowColor: '#000',
+    shadowColor: '#004D4D',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 4,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 6,
   },
   logInButton: {
-    backgroundColor: '#004D4D',
-    paddingVertical: 18,
     borderRadius: 12,
+    overflow: 'hidden',
     marginBottom: 20,
-    shadowColor: '#000',
+    shadowColor: '#004D4D',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 4,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 6,
+  },
+  buttonGradient: {
+    paddingVertical: 18,
+    alignItems: 'center',
   },
   buttonText: {
     color: '#FFFFFF',

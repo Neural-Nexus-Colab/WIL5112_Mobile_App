@@ -8,6 +8,7 @@ import {
   ScrollView
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
 interface Course {
   id: string;
@@ -62,7 +63,7 @@ const SixWeekCoursesScreen: React.FC<SixWeekCoursesProps> = ({ navigation }) => 
 
   return (
     <LinearGradient
-      colors={['#6BC8C3', '#C6E2FC']}
+      colors={['#55c8c2ff', '#C6E2FC']}
       style={styles.container}
     >
       <SafeAreaView style={styles.safeArea}>
@@ -130,20 +131,20 @@ const SixWeekCoursesScreen: React.FC<SixWeekCoursesProps> = ({ navigation }) => 
           <View style={styles.bottomNav}>
             <TouchableOpacity 
               style={styles.navItem}
-              onPress={() => handleNavigation('')}
+              onPress={() => handleNavigation('home')}
               activeOpacity={0.7}
             >
-              <Text style={styles.navIcon}>🏠</Text>
+              <Ionicons name="home-outline" size={24} color="#4B5563" />
               <Text style={styles.navLabel}>Home</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
               style={styles.navItem}
-              onPress={() => handleNavigation('')}
+              onPress={() => handleNavigation('calc')}
               activeOpacity={0.7}
             >
-              <Text style={styles.navIcon}>👤</Text>
-              <Text style={styles.navLabel}>Account</Text>
+              <MaterialCommunityIcons name="calculator" size={24} color="#4B5563" />
+              <Text style={styles.navLabel}>Calculator</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -151,7 +152,7 @@ const SixWeekCoursesScreen: React.FC<SixWeekCoursesProps> = ({ navigation }) => 
               onPress={() => handleNavigation('')}
               activeOpacity={0.7}
             >
-              <Text style={styles.navIcon}>📞</Text>
+              <Ionicons name="call-outline" size={24} color="#4B5563" />
               <Text style={styles.navLabel}>Contact</Text>
             </TouchableOpacity>
           </View>

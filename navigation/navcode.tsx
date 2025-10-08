@@ -8,7 +8,7 @@ import CookingCourseDetailScreen from '../screens/courses/cooking'
 import GardenMaintenanceDetailScreen from '../screens/courses/gardening'
 import ChildMindingCourseDetailScreen from '../screens/courses/child'
 import CourseFeeCalculationScreen from '../screens/calc'
-
+import HomeScreen from '../screens/homepage'
 
  type RootStackParamList = { 
   Welcome: undefined; 
@@ -19,6 +19,7 @@ import CourseFeeCalculationScreen from '../screens/calc'
   garden:undefined;
   childmind:undefined;
   calc:undefined;
+  home: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -35,6 +36,7 @@ export default function StackNavigator() {
           <Stack.Screen name="garden" component={GardenMaintenanceDetailScreen}  options={{ headerShown: false }}/>
           <Stack.Screen name="childmind" component={ChildMindingCourseDetailScreen}  options={{ headerShown: false }}/>
           <Stack.Screen name="calc" component={CourseFeeCalculationScreen}  options={{ headerShown: false }}/>
+           <Stack.Screen name="home" component={HomeScreen}  options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -27,8 +27,8 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
 
   const handleSignup = () => {
     console.log('Sign up pressed', { fullName, email, username, password, repeatPassword });
-    // Add your signup logic here
-    // navigation.navigate('Home');
+    
+     navigation.navigate('home');
   };
 
   const handleLogin = () => {
@@ -37,7 +37,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
 
   const handleSocialSignup = (platform: string) => {
     console.log(`Sign up with ${platform}`);
-    // Add social signup logic here
+   
   };
 
   return (
@@ -167,7 +167,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
                 activeOpacity={0.85}
               >
                 <LinearGradient
-                  colors={['#16697A', '#1A7F94']}
+                   colors={["#004D4D", "#006666"]}
                   style={styles.buttonGradient}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}

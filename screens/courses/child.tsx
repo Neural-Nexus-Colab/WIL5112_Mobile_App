@@ -9,6 +9,7 @@ import {
   Image
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
 interface ChildMindingCourseDetailProps {
   navigation: any;
@@ -36,7 +37,7 @@ const ChildMindingCourseDetailScreen: React.FC<ChildMindingCourseDetailProps> = 
 
   const handleNext = () => {
     console.log('Next pressed');
-    // Navigate to enrollment or next step
+    navigation.navigate('garden')
   };
 
   const handleNavigation = (screen: string) => {
@@ -45,7 +46,7 @@ const ChildMindingCourseDetailScreen: React.FC<ChildMindingCourseDetailProps> = 
 
   return (
     <LinearGradient
-      colors={['#4DB8C4', '#7DD3DB', '#A8DDE3']}
+      colors={['#55c8c2ff', '#C6E2FC']}
       style={styles.container}
     >
       <SafeAreaView style={styles.safeArea}>
@@ -126,32 +127,32 @@ const ChildMindingCourseDetailScreen: React.FC<ChildMindingCourseDetailProps> = 
             </TouchableOpacity>
           </ScrollView>
 
-          {/* Bottom Navigation */}
+           {/* Bottom Navigation */}
           <View style={styles.bottomNav}>
             <TouchableOpacity 
               style={styles.navItem}
-              onPress={() => handleNavigation('Home')}
+              onPress={() => handleNavigation('home')}
               activeOpacity={0.7}
             >
-              <Text style={styles.navIcon}>🏠</Text>
+              <Ionicons name="home-outline" size={24} color="#4B5563" />
               <Text style={styles.navLabel}>Home</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
               style={styles.navItem}
-              onPress={() => handleNavigation('Account')}
+              onPress={() => handleNavigation('calc')}
               activeOpacity={0.7}
             >
-              <Text style={styles.navIcon}>👤</Text>
-              <Text style={styles.navLabel}>Account</Text>
+              <MaterialCommunityIcons name="calculator" size={24} color="#4B5563" />
+              <Text style={styles.navLabel}>Calculator</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
               style={styles.navItem}
-              onPress={() => handleNavigation('Contact')}
+              onPress={() => handleNavigation('')}
               activeOpacity={0.7}
             >
-              <Text style={styles.navIcon}>📞</Text>
+              <Ionicons name="call-outline" size={24} color="#4B5563" />
               <Text style={styles.navLabel}>Contact</Text>
             </TouchableOpacity>
           </View>

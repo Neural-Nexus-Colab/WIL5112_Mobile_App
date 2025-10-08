@@ -24,8 +24,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
   const handleLogin = () => {
     console.log('Login pressed', { email, password, rememberMe });
-    // Add your login logic here
-    // navigation.navigate('Home');
+    navigation.navigate('home')
   };
 
   const handleSignUp = () => {
@@ -39,7 +38,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
   return (
     <LinearGradient
-      colors={['#6BC8C3', '#C6E2FC']}
+      colors={['#55c8c2ff', '#C6E2FC']}
       style={styles.gradient}
     >
       <SafeAreaView style={styles.safeArea}>
@@ -121,7 +120,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                 activeOpacity={0.85}
               >
                 <LinearGradient
-                  colors={['#16697A', '#1A7F94']}
+                   colors={["#004D4D", "#006666"]}
                   style={styles.buttonGradient}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
