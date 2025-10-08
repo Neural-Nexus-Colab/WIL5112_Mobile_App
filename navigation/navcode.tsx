@@ -11,6 +11,9 @@ import ChildMindingCourseDetailScreen from "../screens/courses/child";
 import CourseFeeCalculationScreen from "../screens/calc";
 import HomeScreen from "../screens/homepage";
 import FirstAidCourseDetailScreen from "../screens/monthcourses/firstaid";
+import LandscapingDetailScreen from "../screens/monthcourses/landscaping";
+import LifeSkillDetailedScreen from "../screens/monthcourses/life";
+import SewingDetailedScreen from "../screens/monthcourses/sewing";
 
 type RootStackParamList = {
   Welcome: undefined;
@@ -24,6 +27,9 @@ type RootStackParamList = {
   calc: undefined;
   home: undefined;
   firstaid: undefined;
+  land: undefined;
+  life: undefined;
+  sewing: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -85,6 +91,21 @@ export default function StackNavigator() {
         <Stack.Screen
           name="firstaid"
           component={FirstAidCourseDetailScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="land"
+          component={LandscapingDetailScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="sewing"
+          component={SewingDetailedScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="life"
+          component={LifeSkillDetailedScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

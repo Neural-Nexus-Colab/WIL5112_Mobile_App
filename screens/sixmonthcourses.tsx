@@ -33,7 +33,7 @@ export default function SixMonthCoursesScreen ({ navigation })  {
       price: 'R1500'
     },
     {
-      id: 'landscaping',
+      id: 'land',
       title: 'Landscaping Course',
       description: 'Design and maintenance beautiful and functional outdoor and spaces with practical gardening.',
       price: 'R1500'

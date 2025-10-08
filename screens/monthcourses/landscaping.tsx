@@ -11,16 +11,16 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
-export default function FirstAidCourseDetailScreen({ navigation }) {
+export default function LandscapingDetailScreen({ navigation }) {
   const contentItems = [
-    "Clinical Skills",
-    "Patient Communication",
-    "Wound Care",
-    "Bleeding Control",
-    "Burns & Sprains Treatment",
-    "Fracture Treatment",
-    "Stroke Recognition",
-    "CPR(Cardiopulmonary Resuscitation)",
+    "Outdoor space transformation",
+    "Mulching & Lawn Care",
+    "Hardscaping",
+    "Operating hand tools safely",
+    "Installing drainage systems",
+    "Pruning & Fertilizing",
+    "Site & Layout Planning",
+    "Drainage Solutions",
   ];
 
   const handleBackPress = () => {
@@ -33,7 +33,7 @@ export default function FirstAidCourseDetailScreen({ navigation }) {
 
   const handleNext = () => {
     console.log("Next pressed");
-    navigation.navigate("sewing");
+    navigation.navigate("life");
   };
 
   const handleNavigation = (screen: string) => {
@@ -55,7 +55,7 @@ export default function FirstAidCourseDetailScreen({ navigation }) {
                      </TouchableOpacity>
 
             <Text style={styles.headerTitle}>
-              Explore the{"\n"}First-Aid Course
+              Explore the{"\n"}Landscaping Course
             </Text>
 
             <TouchableOpacity
@@ -78,7 +78,7 @@ export default function FirstAidCourseDetailScreen({ navigation }) {
             {/* Course Image */}
             <View style={styles.imageContainer}>
               <Image
-                source={require("../../monthcoursesimages/firstaidcourse.jpeg")}
+                source={require("../../monthcoursesimages/landscapingimage.jpeg")}
                 style={styles.courseImage}
                 resizeMode="cover"
               />
