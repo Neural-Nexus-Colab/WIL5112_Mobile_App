@@ -11,11 +11,8 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-interface GardenMaintenanceDetailProps {
-  navigation: any;
-}
 
-const GardenMaintenanceDetailScreen: React.FC<GardenMaintenanceDetailProps> = ({ navigation }) => {
+export default function GardenMaintenanceDetailScreen({ navigation }) {
   const contentItems = [
     'Plant growth cycle skills',
     'Soil types identification',
@@ -365,5 +362,3 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
-
-export default GardenMaintenanceDetailScreen;

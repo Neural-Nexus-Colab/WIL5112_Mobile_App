@@ -17,11 +17,8 @@ interface Course {
   price: string;
 }
 
-interface SixWeekCoursesProps {
-  navigation: any;
-}
 
-const SixWeekCoursesScreen: React.FC<SixWeekCoursesProps> = ({ navigation }) => {
+export default function SixWeekCoursesScreen ({ navigation })  {
   const courses: Course[] = [
     {
       id: 'cooking',
@@ -322,5 +319,3 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
-
-export default SixWeekCoursesScreen;

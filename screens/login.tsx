@@ -12,11 +12,9 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-interface LoginScreenProps {
-  navigation: any;
-}
 
-const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
+
+export default function LoginScreen ({ navigation })  {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -394,5 +392,3 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 });
-
-export default LoginScreen;

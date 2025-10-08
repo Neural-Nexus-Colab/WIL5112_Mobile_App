@@ -16,11 +16,8 @@ interface Course {
   price: number;
 }
 
-interface CourseFeeCalculationProps {
-  navigation: any;
-}
 
-const CourseFeeCalculationScreen: React.FC<CourseFeeCalculationProps> = ({ navigation }) => {
+export default function CourseFeeCalculationScreen ({ navigation }) {
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
@@ -596,4 +593,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CourseFeeCalculationScreen;

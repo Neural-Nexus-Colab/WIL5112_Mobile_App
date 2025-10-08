@@ -11,11 +11,9 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-interface ChildMindingCourseDetailProps {
-  navigation: any;
-}
 
-const ChildMindingCourseDetailScreen: React.FC<ChildMindingCourseDetailProps> = ({ navigation }) => {
+
+export default function ChildMindingCourseDetailScreen({ navigation }){
   const contentItems = [
     'Parental guidance skills',
     'Positive disciplinary techniques',
@@ -364,4 +362,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChildMindingCourseDetailScreen;

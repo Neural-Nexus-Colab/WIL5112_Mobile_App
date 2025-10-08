@@ -11,11 +11,8 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-interface CookingCourseDetailProps {
-  navigation: any;
-}
 
-const CookingCourseDetailScreen: React.FC<CookingCourseDetailProps> = ({ navigation }) => {
+export default function  CookingCourseDetailScreen ({ navigation }) {
   const contentItems = [
     'Sautéing',
     'Sauce making',
@@ -364,4 +361,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CookingCourseDetailScreen;

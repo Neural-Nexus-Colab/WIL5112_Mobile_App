@@ -12,11 +12,9 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-interface SignupScreenProps {
-  navigation: any;
-}
 
-const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
+
+export default function SignupScreen ({ navigation })  {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -404,5 +402,3 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 });
-
-export default SignupScreen;
