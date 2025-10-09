@@ -131,7 +131,7 @@ export default function HomeScreen({ navigation }) {
 
               <TouchableOpacity
                 style={styles.navButton}
-                onPress={() => handleNavigation("")}
+                onPress={() => handleNavigation("contact")}
                 activeOpacity={0.85}
               >
                 <LinearGradient
@@ -171,7 +171,7 @@ export default function HomeScreen({ navigation }) {
 
             <TouchableOpacity
               style={styles.navItem}
-              onPress={() => handleNavigation("")}
+              onPress={() => handleNavigation("contact")}
               activeOpacity={0.7}
             >
               <Ionicons name="call-outline" size={24} color="#4B5563" />

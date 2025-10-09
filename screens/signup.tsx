@@ -6,36 +6,57 @@ import {
   TouchableOpacity, 
   StyleSheet,
   SafeAreaView,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView
+  ScrollView,
+  Alert
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-
-export default function SignupScreen ({ navigation })  {
+export default function SignupScreen({ navigation }) {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
   const handleSignup = () => {
-    console.log('Sign up pressed', { fullName, email, username, password, repeatPassword });
-    
-     navigation.navigate('home');
-  };
+    // Simple validation
+    if (!fullName.trim()) {
+      Alert.alert('Error', 'Full name is required');
+      return;
+    }
+    if (!email.trim() || !email.includes('@')) {
+      Alert.alert('Error', 'Valid email is required');
+      return;
+    }
+    if (!username.trim() || username.length < 3) {
+      Alert.alert('Error', 'Username must be at least 3 characters');
+      return;
+    }
+    if (!password || password.length < 8) {
+      Alert.alert('Error', 'Password must be at least 8 characters');
+      return;
+    }
+    if (password !== repeatPassword) {
+      Alert.alert('Error', 'Passwords do not match');
+      return;
+    }
 
-  const handleLogin = () => {
-    navigation.navigate('Login');
-  };
+    // Success
+    Alert.alert('Success', 'Account created!', [
+      {
+        text: 'OK',
+        onPress: () => navigation.navigate('home')
+      }
+    ]);
 
-  const handleSocialSignup = (platform: string) => {
-    console.log(`Sign up with ${platform}`);
-   
+    // Clear form
+    setFullName('');
+    setEmail('');
+    setUsername('');
+    setPassword('');
+    setRepeatPassword('');
   };
 
   return (
@@ -44,209 +65,147 @@ export default function SignupScreen ({ navigation })  {
       style={styles.gradient}
     >
       <SafeAreaView style={styles.safeArea}>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          style={styles.keyboardView}
+        <ScrollView 
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps="handled"
         >
-          <ScrollView 
-            contentContainerStyle={styles.scrollContent}
-            keyboardShouldPersistTaps="handled"
-            showsVerticalScrollIndicator={false}
-          >
-            {/* Top Section */}
-            <View style={styles.topSection}>
-              <Text style={styles.signupTitle}>Sign up</Text>
-              <Text style={styles.subtitle}>Create a new account</Text>
+          <View style={styles.topSection}>
+            <Text style={styles.signupTitle}>Sign up</Text>
+            <Text style={styles.subtitle}>Create a new account</Text>
+          </View>
+
+          <View style={styles.formCard}>
+            {/* Full Name */}
+            <Text style={styles.label}>Full name</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Enter your full name"
+                placeholderTextColor="#9CA3AF"
+                style={styles.input}
+                value={fullName}
+                onChangeText={setFullName}
+                autoCapitalize="words"
+              />
+              <Text style={styles.inputIcon}>👤</Text>
             </View>
 
-            {/* Bottom Section - Form Card */}
-            <View style={styles.formCard}>
-              {/* Full Name Input */}
-              <Text style={styles.label}>Full name</Text>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  placeholder="Enter your full name"
-                  placeholderTextColor="#9CA3AF"
-                  style={styles.input}
-                  value={fullName}
-                  onChangeText={setFullName}
-                  autoCapitalize="words"
-                />
-                <View style={styles.iconContainer}>
-                  <Text style={styles.inputIcon}>👤</Text>
-                </View>
-              </View>
+            {/* Email */}
+            <Text style={styles.label}>Email Address</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Enter your email"
+                placeholderTextColor="#9CA3AF"
+                style={styles.input}
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+              <Text style={styles.inputIcon}>✉️</Text>
+            </View>
 
-              {/* Email Input */}
-              <Text style={styles.label}>Email Address</Text>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  placeholder="Enter your email"
-                  placeholderTextColor="#9CA3AF"
-                  style={styles.input}
-                  value={email}
-                  onChangeText={setEmail}
-                  keyboardType="email-address"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                />
-                <View style={styles.iconContainer}>
-                  <Text style={styles.inputIcon}>✉️</Text>
-                </View>
-              </View>
+            {/* Username */}
+            <Text style={styles.label}>Create a username</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Enter your username"
+                placeholderTextColor="#9CA3AF"
+                style={styles.input}
+                value={username}
+                onChangeText={setUsername}
+                autoCapitalize="none"
+              />
+              <Text style={styles.inputIcon}>👤</Text>
+            </View>
 
-              {/* Username Input */}
-              <Text style={styles.label}>Create a username</Text>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  placeholder="Enter your Username"
-                  placeholderTextColor="#9CA3AF"
-                  style={styles.input}
-                  value={username}
-                  onChangeText={setUsername}
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                />
-                <View style={styles.iconContainer}>
-                  <Text style={styles.inputIcon}>👨</Text>
-                </View>
-              </View>
-
-              {/* Password Input */}
-              <Text style={styles.label}>Create your password</Text>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  placeholder="••••••••••"
-                  placeholderTextColor="#9CA3AF"
-                  secureTextEntry={!showPassword}
-                  style={styles.input}
-                  value={password}
-                  onChangeText={setPassword}
-                  autoCapitalize="none"
-                />
-                <TouchableOpacity 
-                  onPress={() => setShowPassword(!showPassword)}
-                  style={styles.iconContainer}
-                  activeOpacity={0.7}
-                >
-                  <Text style={styles.inputIcon}>
-                    {showPassword ? '👁️' : '🔑'}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-
-              {/* Repeat Password Input */}
-              <Text style={styles.label}>Repeat password</Text>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  placeholder="••••••••••"
-                  placeholderTextColor="#9CA3AF"
-                  secureTextEntry={!showRepeatPassword}
-                  style={styles.input}
-                  value={repeatPassword}
-                  onChangeText={setRepeatPassword}
-                  autoCapitalize="none"
-                />
-                <TouchableOpacity 
-                  onPress={() => setShowRepeatPassword(!showRepeatPassword)}
-                  style={styles.iconContainer}
-                  activeOpacity={0.7}
-                >
-                  <Text style={styles.inputIcon}>
-                    {showRepeatPassword ? '👁️' : '🔒'}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-
-              {/* Sign up button */}
-              <TouchableOpacity 
-                style={styles.signupButton}
-                onPress={handleSignup}
-                activeOpacity={0.85}
-              >
-                <LinearGradient
-                   colors={["#004D4D", "#006666"]}
-                  style={styles.buttonGradient}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 0 }}
-                >
-                  <Text style={styles.signupButtonText}>Sign up</Text>
-                </LinearGradient>
-              </TouchableOpacity>
-
-              {/* Or sign up with */}
-              <View style={styles.dividerContainer}>
-                <View style={styles.dividerLine} />
-                <Text style={styles.orText}>Or Sign up with</Text>
-                <View style={styles.dividerLine} />
-              </View>
-
-              {/* Social Signup Buttons */}
-              <View style={styles.socialContainer}>
-                <TouchableOpacity 
-                  style={styles.socialButton}
-                  onPress={() => handleSocialSignup('Google')}
-                  activeOpacity={0.8}
-                >
-                  <LinearGradient
-                    colors={['#FFFFFF', '#F8F9FA']}
-                    style={styles.socialGradient}
-                  >
-                    <Text style={styles.socialIconText}>G</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-
-                <TouchableOpacity 
-                  style={styles.socialButton}
-                  onPress={() => handleSocialSignup('Facebook')}
-                  activeOpacity={0.8}
-                >
-                  <LinearGradient
-                    colors={['#FFFFFF', '#F8F9FA']}
-                    style={styles.socialGradient}
-                  >
-                    <Text style={styles.socialIconText}>f</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-
-                <TouchableOpacity 
-                  style={styles.socialButton}
-                  onPress={() => handleSocialSignup('Twitter')}
-                  activeOpacity={0.8}
-                >
-                  <LinearGradient
-                    colors={['#FFFFFF', '#F8F9FA']}
-                    style={styles.socialGradient}
-                  >
-                    <Text style={styles.socialIconText}>𝕏</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              </View>
-
-              {/* Footer */}
-              <Text style={styles.footer}>
-                Already have an account?{' '}
-                <Text style={styles.loginLink} onPress={handleLogin}>
-                  Log in
+            {/* Password */}
+            <Text style={styles.label}>Create your password</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="••••••••••"
+                placeholderTextColor="#9CA3AF"
+                secureTextEntry={!showPassword}
+                style={styles.input}
+                value={password}
+                onChangeText={setPassword}
+              />
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <Text style={styles.inputIcon}>
+                  {showPassword ? '👁️' : '🔒'}
                 </Text>
-                {' '}here
-              </Text>
+              </TouchableOpacity>
             </View>
-          </ScrollView>
-        </KeyboardAvoidingView>
+
+            {/* Repeat Password */}
+            <Text style={styles.label}>Repeat password</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="••••••••••"
+                placeholderTextColor="#9CA3AF"
+                secureTextEntry
+                style={styles.input}
+                value={repeatPassword}
+                onChangeText={setRepeatPassword}
+              />
+              <Text style={styles.inputIcon}>🔒</Text>
+            </View>
+
+            {/* Sign up button */}
+            <TouchableOpacity 
+              style={styles.signupButton}
+              onPress={handleSignup}
+              activeOpacity={0.85}
+            >
+              <LinearGradient
+                colors={["#004D4D", "#006666"]}
+                style={styles.buttonGradient}
+              >
+                <Text style={styles.signupButtonText}>Sign up</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+
+            {/* Social buttons */}
+            <View style={styles.dividerContainer}>
+              <View style={styles.dividerLine} />
+              <Text style={styles.orText}>Or Sign up with</Text>
+              <View style={styles.dividerLine} />
+            </View>
+
+            <View style={styles.socialContainer}>
+              <TouchableOpacity style={styles.socialButton}>
+                <Text style={styles.socialIconText}>G</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.socialButton}>
+                <Text style={styles.socialIconText}>f</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.socialButton}>
+                <Text style={styles.socialIconText}>𝕏</Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* Footer */}
+            <Text style={styles.footer}>
+              Already have an account?{' '}
+              <Text 
+                style={styles.loginLink} 
+                onPress={() => navigation.navigate('Login')}
+              >
+                Log in
+              </Text>
+              {' '}here
+            </Text>
+          </View>
+        </ScrollView>
       </SafeAreaView>
     </LinearGradient>
   );
-};
+}
 
 const styles = StyleSheet.create({
   gradient: {
     flex: 1,
   },
   safeArea: {
-    flex: 1,
-  },
-  keyboardView: {
     flex: 1,
   },
   scrollContent: {
@@ -264,13 +223,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#111827',
     marginBottom: 12,
-    letterSpacing: -0.5,
     textAlign: 'center',
   },
   subtitle: {
     fontSize: 17,
     color: '#4B5563',
-    fontWeight: '400',
     textAlign: 'center',
   },
   formCard: {
@@ -281,10 +238,7 @@ const styles = StyleSheet.create({
     paddingTop: 32,
     paddingBottom: 36,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
+    shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.15,
     shadowRadius: 16,
     elevation: 10,
@@ -293,7 +247,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     color: '#374151',
-    marginBottom: 10,
+    marginBottom: 8,
     marginTop: 8,
   },
   inputContainer: {
@@ -305,18 +259,16 @@ const styles = StyleSheet.create({
     borderColor: '#D1D5DB',
     paddingHorizontal: 16,
     height: 54,
-    marginBottom: 18,
+    marginBottom: 16,
   },
   input: {
     flex: 1,
     fontSize: 16,
     color: '#1F2937',
   },
-  iconContainer: {
-    paddingLeft: 8,
-  },
   inputIcon: {
     fontSize: 20,
+    marginLeft: 8,
   },
   signupButton: {
     borderRadius: 12,
@@ -324,10 +276,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 24,
     shadowColor: '#16697A',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 6,
@@ -340,7 +289,6 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 18,
     fontWeight: '700',
-    letterSpacing: 0.5,
   },
   dividerContainer: {
     flexDirection: 'row',
@@ -356,7 +304,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#6B7280',
     marginHorizontal: 16,
-    fontWeight: '500',
   },
   socialContainer: {
     flexDirection: 'row',
@@ -365,25 +312,19 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   socialButton: {
-    borderRadius: 12,
-    overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-    elevation: 3,
-  },
-  socialGradient: {
     width: 72,
     height: 72,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: '#E5E7EB',
-    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
   },
   socialIconText: {
     fontSize: 32,
@@ -394,7 +335,6 @@ const styles = StyleSheet.create({
     color: '#6B7280',
     textAlign: 'center',
     fontSize: 15,
-    fontWeight: '400',
   },
   loginLink: {
     fontWeight: '700',

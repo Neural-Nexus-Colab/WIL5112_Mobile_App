@@ -14,6 +14,7 @@ import FirstAidCourseDetailScreen from "../screens/monthcourses/firstaid";
 import LandscapingDetailScreen from "../screens/monthcourses/landscaping";
 import LifeSkillDetailedScreen from "../screens/monthcourses/life";
 import SewingDetailedScreen from "../screens/monthcourses/sewing";
+import ContactUsScreen from "../screens/contact";
 
 type RootStackParamList = {
   Welcome: undefined;
@@ -30,6 +31,7 @@ type RootStackParamList = {
   land: undefined;
   life: undefined;
   sewing: undefined;
+  contact: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -106,6 +108,11 @@ export default function StackNavigator() {
         <Stack.Screen
           name="life"
           component={LifeSkillDetailedScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="contact"
+          component={ContactUsScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
