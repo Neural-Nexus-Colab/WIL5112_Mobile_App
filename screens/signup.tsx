@@ -1,133 +1,344 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
+import React, { useState } from 'react';
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
   StyleSheet,
-
+  SafeAreaView,
+  ScrollView,
+  Alert
 } from 'react-native';
-import { useState } from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
 
-export default function SignUpScreen({navigation}) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+export default function SignupScreen({ navigation }) {
   const [fullName, setFullName] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [valid, setValid] = useState(false);
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleSignUp = () => {
-    if (password !== confirmPassword)  {
-      alert("Passwords do not match");
-     
-    } else if (!email || !password || !fullName || !confirmPassword) {
-      alert("Please fill all fields");
-     
-    } else if (password.length < 6) {
-      alert("Password should be at least 6 characters");
-    
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      alert("Please enter a valid email");
-     
-    }else{
-      setValid(true);
+  const handleSignup = () => {
+    // Simple validation
+    if (!fullName.trim()) {
+      Alert.alert('Error', 'Full name is required');
+      return;
+    }
+    if (!email.trim() || !email.includes('@')) {
+      Alert.alert('Error', 'Valid email is required');
+      return;
+    }
+    if (!username.trim() || username.length < 3) {
+      Alert.alert('Error', 'Username must be at least 3 characters');
+      return;
+    }
+    if (!password || password.length < 8) {
+      Alert.alert('Error', 'Password must be at least 8 characters');
+      return;
+    }
+    if (password !== repeatPassword) {
+      Alert.alert('Error', 'Passwords do not match');
       return;
     }
 
-    if (valid) {
-      alert("Account created successfully!");
-      navigation.navigate('login');
-    }
-  }
+    // Success
+    Alert.alert('Success', 'Account created!', [
+      {
+        text: 'OK',
+        onPress: () => navigation.navigate('home')
+      }
+    ]);
+
+    // Clear form
+    setFullName('');
+    setEmail('');
+    setUsername('');
+    setPassword('');
+    setRepeatPassword('');
+  };
+
   return (
-  <View style={styles.container}>
-    {/* ------- Title ------- */}
-    <Text style={styles.title}>Create an Account</Text>
+    <LinearGradient
+      colors={['#6BC8C3', '#C6E2FC']}
+      style={styles.gradient}
+    >
+      <SafeAreaView style={styles.safeArea}>
+        <ScrollView 
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View style={styles.topSection}>
+            <Text style={styles.signupTitle}>Sign up</Text>
+            <Text style={styles.subtitle}>Create a new account</Text>
+          </View>
 
-    {/* ------- Full Name ------- */}
-    <Text style={styles.label}>Full name: </Text>
-    <TextInput
-      placeholder="Enter your Full name"
-      placeholderTextColor="#888"
-      style={styles.input}
-      onChangeText={text => setFullName(text)}
-    />
+          <View style={styles.formCard}>
+            {/* Full Name */}
+            <Text style={styles.label}>Full name</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Enter your full name"
+                placeholderTextColor="#9CA3AF"
+                style={styles.input}
+                value={fullName}
+                onChangeText={setFullName}
+                autoCapitalize="words"
+              />
+              <Text style={styles.inputIcon}>👤</Text>
+            </View>
 
-    {/* ------- Email ------- */}
-    <Text style={styles.label}>Enter Email: </Text>
-    <TextInput
-      placeholder="Enter your email"
-      placeholderTextColor="#888"
-      keyboardType="email-address"
-      style={styles.input}
-      onChangeText={text => setEmail(text)}
-    />
+            {/* Email */}
+            <Text style={styles.label}>Email Address</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Enter your email"
+                placeholderTextColor="#9CA3AF"
+                style={styles.input}
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+              <Text style={styles.inputIcon}>✉️</Text>
+            </View>
 
-    {/* ------- Password ------- */}
-    <Text style={styles.label}>Create a password</Text>
-    <TextInput
-      placeholder="*********"
-      placeholderTextColor="#888"
-      secureTextEntry
-      style={styles.input}
-      onChangeText={text => setPassword(text)}
-    />
+            {/* Username */}
+            <Text style={styles.label}>Create a username</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Enter your username"
+                placeholderTextColor="#9CA3AF"
+                style={styles.input}
+                value={username}
+                onChangeText={setUsername}
+                autoCapitalize="none"
+              />
+              <Text style={styles.inputIcon}>👤</Text>
+            </View>
 
-    {/* ------- Confirm Password ------- */}
-    <Text style={styles.label}>Confirm password: </Text>
-    <TextInput
-      placeholder="*********"
-      placeholderTextColor="#888"
-      secureTextEntry
-      style={styles.input}
-      onChangeText={text => setConfirmPassword(text)}
-    />
+            {/* Password */}
+            <Text style={styles.label}>Create your password</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="••••••••••"
+                placeholderTextColor="#9CA3AF"
+                secureTextEntry={!showPassword}
+                style={styles.input}
+                value={password}
+                onChangeText={setPassword}
+              />
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <Text style={styles.inputIcon}>
+                  {showPassword ? '👁️' : '🔒'}
+                </Text>
+              </TouchableOpacity>
+            </View>
 
-    {/* ------- Sign-Up Button ------- */}
-    <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-      <Text style={styles.buttonText}>Sign Up</Text>
-    </TouchableOpacity>
-  </View>
-);};
+            {/* Repeat Password */}
+            <Text style={styles.label}>Repeat password</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="••••••••••"
+                placeholderTextColor="#9CA3AF"
+                secureTextEntry
+                style={styles.input}
+                value={repeatPassword}
+                onChangeText={setRepeatPassword}
+              />
+              <Text style={styles.inputIcon}>🔒</Text>
+            </View>
 
-/* -------------------- Styles -------------------- */
+            {/* Sign up button */}
+            <TouchableOpacity 
+              style={styles.signupButton}
+              onPress={handleSignup}
+              activeOpacity={0.85}
+            >
+              <LinearGradient
+                colors={["#004D4D", "#006666"]}
+                style={styles.buttonGradient}
+              >
+                <Text style={styles.signupButtonText}>Sign up</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+
+            {/* Social buttons */}
+            <View style={styles.dividerContainer}>
+              <View style={styles.dividerLine} />
+              <Text style={styles.orText}>Or Sign up with</Text>
+              <View style={styles.dividerLine} />
+            </View>
+
+            <View style={styles.socialContainer}>
+              <TouchableOpacity style={styles.socialButton}>
+                <Text style={styles.socialIconText}>G</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.socialButton}>
+                <Text style={styles.socialIconText}>f</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.socialButton}>
+                <Text style={styles.socialIconText}>𝕏</Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* Footer */}
+            <Text style={styles.footer}>
+              Already have an account?{' '}
+              <Text 
+                style={styles.loginLink} 
+                onPress={() => navigation.navigate('Login')}
+              >
+                Log in
+              </Text>
+              {' '}here
+            </Text>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </LinearGradient>
+  );
+}
+
 const styles = StyleSheet.create({
-  container: {
+  gradient: {
     flex: 1,
-    backgroundColor: '#007AFF',
-    paddingHorizontal: 32,
-    justifyContent: 'center',
   },
-  title: {
-    fontSize: 28,
+  safeArea: {
+    flex: 1,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    paddingBottom: 40,
+  },
+  topSection: {
+    paddingHorizontal: 32,
+    paddingTop: 50,
+    paddingBottom: 40,
+    alignItems: 'center',
+  },
+  signupTitle: {
+    fontSize: 48,
     fontWeight: 'bold',
-    color: '#000',
+    color: '#111827',
+    marginBottom: 12,
     textAlign: 'center',
-    marginBottom: 32,
+  },
+  subtitle: {
+    fontSize: 17,
+    color: '#4B5563',
+    textAlign: 'center',
+  },
+  formCard: {
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    marginHorizontal: 20,
+    borderRadius: 24,
+    paddingHorizontal: 28,
+    paddingTop: 32,
+    paddingBottom: 36,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.15,
+    shadowRadius: 16,
+    elevation: 10,
   },
   label: {
-    color: '#000',
-    fontSize: 18,
-    marginBottom: 4,
-  },
-  input: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    marginBottom: 16,
-    fontSize: 16,
-  },
-  button: {
-    backgroundColor: '#7fe7f2',
-    paddingVertical: 14,
-    borderRadius: 24,
-    alignItems: 'center',
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 8,
     marginTop: 8,
   },
-  buttonText: {
-    color: '#000',
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F9FAFB',
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderColor: '#D1D5DB',
+    paddingHorizontal: 16,
+    height: 54,
+    marginBottom: 16,
+  },
+  input: {
+    flex: 1,
     fontSize: 16,
+    color: '#1F2937',
+  },
+  inputIcon: {
+    fontSize: 20,
+    marginLeft: 8,
+  },
+  signupButton: {
+    borderRadius: 12,
+    overflow: 'hidden',
+    marginTop: 8,
+    marginBottom: 24,
+    shadowColor: '#16697A',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 6,
+  },
+  buttonGradient: {
+    paddingVertical: 16,
+    alignItems: 'center',
+  },
+  signupButtonText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  dividerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  dividerLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#D1D5DB',
+  },
+  orText: {
+    fontSize: 14,
+    color: '#6B7280',
+    marginHorizontal: 16,
+  },
+  socialContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 16,
+    marginBottom: 32,
+  },
+  socialButton: {
+    width: 72,
+    height: 72,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  socialIconText: {
+    fontSize: 32,
     fontWeight: 'bold',
+    color: '#374151',
+  },
+  footer: {
+    color: '#6B7280',
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  loginLink: {
+    fontWeight: '700',
+    color: '#16697A',
+    textDecorationLine: 'underline',
   },
 });
