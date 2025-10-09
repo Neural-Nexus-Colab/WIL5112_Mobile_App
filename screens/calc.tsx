@@ -99,6 +99,7 @@ export default function CourseFeeCalculationScreen({ navigation }) {
 
   const handleEnroll = () => {
     console.log("Ready to Enroll pressed");
+    alert("Enrollment process initiated!");
   };
 
   const handleNavigation = (screen: string) => {
