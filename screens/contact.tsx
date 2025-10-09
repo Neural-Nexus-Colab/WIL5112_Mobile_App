@@ -6,7 +6,6 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
-  Linking
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -57,19 +56,6 @@ export default function ContactUsScreen ({ navigation })  {
 
   const handleMenuPress = () => {
     console.log('Menu pressed');
-  };
-
-  const handleCall = (phone: string) => {
-    Linking.openURL(`tel:${phone}`);
-  };
-
-  const handleEmail = (email: string) => {
-    Linking.openURL(`mailto:${email}`);
-  };
-
-  const handleMapLocation = (locationName: string) => {
-    console.log(`Opening map for ${locationName}`);
-    // You can add Google Maps or Apple Maps linking here
   };
 
   const handleNavigation = (screen: string) => {
@@ -126,7 +112,6 @@ export default function ContactUsScreen ({ navigation })  {
                 {/* Phone */}
                 <TouchableOpacity 
                   style={styles.infoRow}
-                  onPress={() => handleCall(location.phone)}
                   activeOpacity={0.7}
                 >
                   <MaterialCommunityIcons name="phone" size={20} color="#E74C3C" />
@@ -136,7 +121,6 @@ export default function ContactUsScreen ({ navigation })  {
                 {/* Email */}
                 <TouchableOpacity 
                   style={styles.infoRow}
-                  onPress={() => handleEmail(location.email)}
                   activeOpacity={0.7}
                 >
                   <MaterialCommunityIcons name="email-outline" size={20} color="#6B7280" />
@@ -146,7 +130,6 @@ export default function ContactUsScreen ({ navigation })  {
                 {/* Map Location Button */}
                 <TouchableOpacity 
                   style={styles.mapButton}
-                  onPress={() => handleMapLocation(location.name)}
                   activeOpacity={0.8}
                 >
                   <Text style={styles.mapButtonText}>Map Location</Text>
