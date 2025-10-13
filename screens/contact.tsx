@@ -51,7 +51,7 @@ export default function ContactUsScreen ({ navigation })  {
   ];
 
   const handleBackPress = () => {
-    navigation.goBack();
+    navigation.navigate("home");
   };
 
   const handleMenuPress = () => {
@@ -180,7 +180,7 @@ export default function ContactUsScreen ({ navigation })  {
                   size={24}
                   color="#4B5563"
                 />
-                <Text style={styles.navLabel}>Calculator</Text>
+                <Text style={styles.navLabel}>Fees</Text>
               </TouchableOpacity>
   
               <TouchableOpacity

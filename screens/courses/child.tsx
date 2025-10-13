@@ -24,7 +24,7 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
   ];
 
   const handleBackPress = () => {
-    navigation.goBack();
+    navigation.navigate("sixweekcourses")
   };
 
   const handleMenuPress = () => {
@@ -143,7 +143,7 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
                 size={24}
                 color="#4B5563"
               />
-              <Text style={styles.navLabel}>Calculator</Text>
+              <Text style={styles.navLabel}>Fees</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
