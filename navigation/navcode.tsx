@@ -1,3 +1,4 @@
+// Imports of the necessary libraries and components
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/login";
@@ -16,6 +17,7 @@ import LifeSkillDetailedScreen from "../screens/monthcourses/life";
 import SewingDetailedScreen from "../screens/monthcourses/sewing";
 import ContactUsScreen from "../screens/contact";
 
+// Definition of the type for the navigation parameters
 type RootStackParamList = {
   Welcome: undefined;
   Login: undefined;
@@ -36,6 +38,7 @@ type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
+// Main function that sets up the navigation container and stack navigator
 export default function StackNavigator() {
   return (
     <NavigationContainer>

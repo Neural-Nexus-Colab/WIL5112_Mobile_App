@@ -1,3 +1,4 @@
+// Imports of the necessary libraries and components
 import React from "react";
 import {
   View,
@@ -11,6 +12,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
+// Main function for the Child Minding Course Detail Screen
 export default function ChildMindingCourseDetailScreen({ navigation }) {
   const contentItems = [
     "Parental guidance skills",
@@ -21,27 +23,27 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
     "Child health & Safety",
     "Child support skills",
     "Running daycare skills",
-  ];
+  ]; // List of course content items
 
-  const handleBackPress = () => {
+  const handleBackPress = () => { // function to handle the back button press
     navigation.navigate("sixweekcourses")
   };
 
-  const handleMenuPress = () => {
-    console.log("Menu pressed");
+  const handleMenuPress = () => { // function to handle the menu button press (drawer navigation)
+    
   };
 
-  const handleNext = () => {
+  const handleNext = () => { // function to handle the next button press to navigate to the next course
     console.log("Next pressed");
     navigation.navigate("garden");
   };
 
-  const handleNavigation = (screen: string) => {
-    navigation.navigate(screen);
+  const handleNavigation = (screen: string) => { // function to handle bottom navigation
+    navigation.navigate(screen); 
   };
 
   return (
-    <LinearGradient colors={["#55c8c2ff", "#C6E2FC"]} style={styles.container}>
+    <LinearGradient colors={["#55c8c2ff", "#C6E2FC"]} style={styles.container}> {/* Background gradient */}
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.innerContainer}>
           {/* Header */}
