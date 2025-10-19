@@ -150,7 +150,7 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
 
             <TouchableOpacity
               style={styles.navItem}
-              onPress={() => handleNavigation("")}
+              onPress={() => handleNavigation("contact")}
               activeOpacity={0.7}
             >
               <Ionicons name="call-outline" size={24} color="#4B5563" />

@@ -1,32 +1,30 @@
-import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  TouchableOpacity, 
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
   StyleSheet,
   SafeAreaView,
   KeyboardAvoidingView,
   Platform,
-  ScrollView
-} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+  ScrollView,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
-
-
-export default function LoginScreen ({ navigation })  {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+export default function LoginScreen({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
-    console.log('Login pressed', { email, password, rememberMe });
-    navigation.navigate('home')
+    console.log("Login pressed", { email, password, rememberMe });
+    navigation.navigate("home");
   };
 
   const handleSignUp = () => {
-    navigation.navigate('Signup');
+    navigation.navigate("Signup");
   };
 
   const handleSocialLogin = (platform: string) => {
@@ -35,16 +33,13 @@ export default function LoginScreen ({ navigation })  {
   };
 
   return (
-    <LinearGradient
-      colors={['#55c8c2ff', '#C6E2FC']}
-      style={styles.gradient}
-    >
+    <LinearGradient colors={["#55c8c2ff", "#C6E2FC"]} style={styles.gradient}>
       <SafeAreaView style={styles.safeArea}>
         <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
           style={styles.keyboardView}
         >
-          <ScrollView 
+          <ScrollView
             contentContainerStyle={styles.scrollContent}
             keyboardShouldPersistTaps="handled"
             showsVerticalScrollIndicator={false}
@@ -53,7 +48,9 @@ export default function LoginScreen ({ navigation })  {
             <View style={styles.topSection}>
               <Text style={styles.welcomeBack}>Welcome back,</Text>
               <Text style={styles.loginTitle}>Log in</Text>
-              <Text style={styles.subtitle}>Enter your details to continue</Text>
+              <Text style={styles.subtitle}>
+                Enter your details to continue
+              </Text>
             </View>
 
             {/* Bottom Section - Form Card */}
@@ -88,37 +85,42 @@ export default function LoginScreen ({ navigation })  {
                   onChangeText={setPassword}
                   autoCapitalize="none"
                 />
-                <TouchableOpacity 
+                <TouchableOpacity
                   onPress={() => setShowPassword(!showPassword)}
                   style={styles.iconContainer}
                   activeOpacity={0.7}
                 >
                   <Text style={styles.inputIcon}>
-                    {showPassword ? '👁️' : '🔒'}
+                    {showPassword ? "👁️" : "🔒"}
                   </Text>
                 </TouchableOpacity>
               </View>
 
               {/* Remember Me Checkbox */}
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.rememberContainer}
                 onPress={() => setRememberMe(!rememberMe)}
                 activeOpacity={0.7}
               >
-                <View style={[styles.checkbox, rememberMe && styles.checkboxChecked]}>
+                <View
+                  style={[
+                    styles.checkbox,
+                    rememberMe && styles.checkboxChecked,
+                  ]}
+                >
                   {rememberMe && <Text style={styles.checkmark}>✓</Text>}
                 </View>
                 <Text style={styles.rememberText}>Remember me</Text>
               </TouchableOpacity>
 
               {/* Log-in button */}
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.loginButton}
                 onPress={handleLogin}
                 activeOpacity={0.85}
               >
                 <LinearGradient
-                   colors={["#004D4D", "#006666"]}
+                  colors={["#004D4D", "#006666"]}
                   style={styles.buttonGradient}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
@@ -136,39 +138,39 @@ export default function LoginScreen ({ navigation })  {
 
               {/* Social Login Buttons */}
               <View style={styles.socialContainer}>
-                <TouchableOpacity 
+                <TouchableOpacity
                   style={styles.socialButton}
-                  onPress={() => handleSocialLogin('Google')}
+                  onPress={() => handleSocialLogin("Google")}
                   activeOpacity={0.8}
                 >
                   <LinearGradient
-                    colors={['#FFFFFF', '#F8F9FA']}
+                    colors={["#FFFFFF", "#F8F9FA"]}
                     style={styles.socialGradient}
                   >
                     <Text style={styles.socialIconText}>G</Text>
                   </LinearGradient>
                 </TouchableOpacity>
 
-                <TouchableOpacity 
+                <TouchableOpacity
                   style={styles.socialButton}
-                  onPress={() => handleSocialLogin('Facebook')}
+                  onPress={() => handleSocialLogin("Facebook")}
                   activeOpacity={0.8}
                 >
                   <LinearGradient
-                    colors={['#FFFFFF', '#F8F9FA']}
+                    colors={["#FFFFFF", "#F8F9FA"]}
                     style={styles.socialGradient}
                   >
                     <Text style={styles.socialIconText}>f</Text>
                   </LinearGradient>
                 </TouchableOpacity>
 
-                <TouchableOpacity 
+                <TouchableOpacity
                   style={styles.socialButton}
-                  onPress={() => handleSocialLogin('Twitter')}
+                  onPress={() => handleSocialLogin("Twitter")}
                   activeOpacity={0.8}
                 >
                   <LinearGradient
-                    colors={['#FFFFFF', '#F8F9FA']}
+                    colors={["#FFFFFF", "#F8F9FA"]}
                     style={styles.socialGradient}
                   >
                     <Text style={styles.socialIconText}>𝕏</Text>
@@ -177,20 +179,25 @@ export default function LoginScreen ({ navigation })  {
               </View>
 
               {/* Footer */}
-              <Text style={styles.footer}>
-                Don't have an account?{' '}
-                <Text style={styles.signUpLink} onPress={handleSignUp}>
-                  Sign up
-                </Text>
-                {' '}here
-              </Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={styles.footer}>Don't have an account? </Text>
+                <TouchableOpacity onPress={handleSignUp} activeOpacity={0.7}>
+                  <Text style={styles.signUpLink}>Sign up here</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
       </SafeAreaView>
     </LinearGradient>
   );
-};
+}
 
 const styles = StyleSheet.create({
   gradient: {
@@ -210,37 +217,37 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     paddingTop: 50,
     paddingBottom: 40,
-    alignItems: 'center',
+    alignItems: "center",
   },
   welcomeBack: {
     fontSize: 28,
-    color: '#1F2937',
+    color: "#1F2937",
     marginBottom: 4,
-    fontWeight: '500',
-    textAlign: 'center',
+    fontWeight: "500",
+    textAlign: "center",
   },
   loginTitle: {
     fontSize: 48,
-    fontWeight: 'bold',
-    color: '#111827',
+    fontWeight: "bold",
+    color: "#111827",
     marginBottom: 12,
     letterSpacing: -0.5,
-    textAlign: 'center',
+    textAlign: "center",
   },
   subtitle: {
     fontSize: 17,
-    color: '#4B5563',
-    fontWeight: '400',
-    textAlign: 'center',
+    color: "#4B5563",
+    fontWeight: "400",
+    textAlign: "center",
   },
   formCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
     marginHorizontal: 20,
     borderRadius: 24,
     paddingHorizontal: 28,
     paddingTop: 32,
     paddingBottom: 36,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 8,
@@ -251,18 +258,18 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 15,
-    fontWeight: '600',
-    color: '#374151',
+    fontWeight: "600",
+    color: "#374151",
     marginBottom: 10,
     marginTop: 8,
   },
   inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#F9FAFB',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F9FAFB",
     borderRadius: 12,
     borderWidth: 1.5,
-    borderColor: '#D1D5DB',
+    borderColor: "#D1D5DB",
     paddingHorizontal: 16,
     height: 54,
     marginBottom: 18,
@@ -270,7 +277,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontSize: 16,
-    color: '#1F2937',
+    color: "#1F2937",
   },
   iconContainer: {
     paddingLeft: 8,
@@ -279,8 +286,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   rememberContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 26,
     marginTop: 4,
   },
@@ -289,31 +296,31 @@ const styles = StyleSheet.create({
     height: 22,
     borderRadius: 6,
     borderWidth: 2,
-    borderColor: '#9CA3AF',
-    backgroundColor: '#F3F4F6',
+    borderColor: "#9CA3AF",
+    backgroundColor: "#F3F4F6",
     marginRight: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   checkboxChecked: {
-    backgroundColor: '#16697A',
-    borderColor: '#16697A',
+    backgroundColor: "#16697A",
+    borderColor: "#16697A",
   },
   checkmark: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   rememberText: {
     fontSize: 15,
-    color: '#374151',
-    fontWeight: '500',
+    color: "#374151",
+    fontWeight: "500",
   },
   loginButton: {
     borderRadius: 12,
-    overflow: 'hidden',
+    overflow: "hidden",
     marginBottom: 24,
-    shadowColor: '#16697A',
+    shadowColor: "#16697A",
     shadowOffset: {
       width: 0,
       height: 4,
@@ -324,40 +331,40 @@ const styles = StyleSheet.create({
   },
   buttonGradient: {
     paddingVertical: 16,
-    alignItems: 'center',
+    alignItems: "center",
   },
   loginButtonText: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: "700",
     letterSpacing: 0.5,
   },
   dividerContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 24,
   },
   dividerLine: {
     flex: 1,
     height: 1,
-    backgroundColor: '#D1D5DB',
+    backgroundColor: "#D1D5DB",
   },
   orText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: "#6B7280",
     marginHorizontal: 16,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   socialContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     gap: 16,
     marginBottom: 32,
   },
   socialButton: {
     borderRadius: 12,
-    overflow: 'hidden',
-    shadowColor: '#000',
+    overflow: "hidden",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -369,26 +376,26 @@ const styles = StyleSheet.create({
   socialGradient: {
     width: 72,
     height: 72,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: "#E5E7EB",
     borderRadius: 12,
   },
   socialIconText: {
     fontSize: 32,
-    fontWeight: 'bold',
-    color: '#374151',
+    fontWeight: "bold",
+    color: "#374151",
   },
   footer: {
-    color: '#6B7280',
-    textAlign: 'center',
+    color: "#6B7280",
+    textAlign: "center",
     fontSize: 15,
-    fontWeight: '400',
+    fontWeight: "400",
   },
   signUpLink: {
-    fontWeight: '700',
-    color: '#16697A',
-    textDecorationLine: 'underline',
+    fontWeight: "700",
+    color: "#16697A",
+    textDecorationLine: "underline",
   },
 });
