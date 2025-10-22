@@ -41,6 +41,14 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 // Main function that sets up the navigation container and stack navigator
 export default function StackNavigator() {
   return (
+    /* Code Attribution: 
+    Title: Hello React Navigation
+    Author: React Navigation
+    Date Accessed: 10 October 2025
+    Date Created: 2025
+    Version: Not specified
+    Availability: https://reactnavigation.org/docs/hello-react-navigation 
+    */
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen

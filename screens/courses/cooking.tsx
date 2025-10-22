@@ -30,21 +30,21 @@ export default function CookingCourseDetailScreen({ navigation }) {
     "Skills in meal preparation",
   ];
 
-  const handleBackPress = () => {
+  const handleBackPress = () => { // Function to handle back button press
     navigation.navigate("sixweekcourses");
   };
 
   const handleMenuPress = () => {
-    console.log("Menu pressed");
+
   };
 
   const handleNext = () => {
-    console.log("Next pressed");
-    navigation.navigate("childmind");
+    navigation.navigate("childmind"); // Navigate to the child minding course screen
   };
 
-  const handleNavigation = (screen: string) => {
-    navigation.navigate(screen);
+  // Function to handle bottom navigation
+  const handleNavigation = (screen: string) => {  // TypeScript type annotation added 
+    navigation.navigate(screen); // Navigate to the selected screen
   };
 
   return (
