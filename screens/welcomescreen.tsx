@@ -18,6 +18,14 @@ import { LinearGradient } from "expo-linear-gradient";
 */
 export default function WelcomeScreen({ navigation }) {
   return (
+    /*Code Attribution
+        Title: Expo Linear Gradient
+        Author: Expo Documentation
+        Date Accessed: 1 September 2025
+        Date Created: [s.d]
+        Version: Not specified
+        Availability: https://docs.expo.dev/versions/latest/sdk/linear-gradient/
+    */
     <LinearGradient colors={["#55c8c2ff", "#C6E2FC"]} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.content}>

@@ -30,24 +30,32 @@ export default function CookingCourseDetailScreen({ navigation }) {
     "Skills in meal preparation",
   ];
 
-  const handleBackPress = () => { // Function to handle back button press
+  const handleBackPress = () => {
+    // Function to handle back button press
     navigation.navigate("sixweekcourses");
   };
 
-  const handleMenuPress = () => {
-
-  };
+  const handleMenuPress = () => {};
 
   const handleNext = () => {
     navigation.navigate("childmind"); // Navigate to the child minding course screen
   };
 
   // Function to handle bottom navigation
-  const handleNavigation = (screen: string) => {  // TypeScript type annotation added 
+  const handleNavigation = (screen: string) => {
+    // TypeScript type annotation added
     navigation.navigate(screen); // Navigate to the selected screen
   };
 
   return (
+    /*Code Attribution
+        Title: Expo Linear Gradient
+        Author: Expo Documentation
+        Date Accessed: 1 September 2025
+        Date Created: [s.d]
+        Version: Not specified
+        Availability: https://docs.expo.dev/versions/latest/sdk/linear-gradient/
+    */
     <LinearGradient colors={["#55c8c2ff", "#C6E2FC"]} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.innerContainer}>
@@ -58,6 +66,14 @@ export default function CookingCourseDetailScreen({ navigation }) {
               onPress={handleBackPress}
               activeOpacity={0.7}
             >
+              {/*Code Attribution
+                    Title: Expo Vector Icons
+                    Author: Expo Documentation
+                    Date Accessed: 14 October 2025
+                    Date Created: [s.d]
+                    Version: Not specified
+                    Availability: https://docs.expo.dev/guides/icons/
+                */}
               <Ionicons name="arrow-back" size={24} color="#2C3E50" />
             </TouchableOpacity>
 
