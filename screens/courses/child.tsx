@@ -43,7 +43,6 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
 
   const handleNext = () => {
     // function to handle the next button press to navigate to the next course
-    console.log("Next pressed");
     navigation.navigate("garden");
   };
 
@@ -53,6 +52,14 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
   };
 
   return (
+    /*Code Attribution
+        Title: Expo Linear Gradient
+        Author: Expo Documentation
+        Date Accessed: 1 September 2025
+        Date Created: [s.d]
+        Version: Not specified
+        Availability: https://docs.expo.dev/versions/latest/sdk/linear-gradient/
+    */
     <LinearGradient colors={["#55c8c2ff", "#C6E2FC"]} style={styles.container}>
       {/* Background gradient */}
       <SafeAreaView style={styles.safeArea}>
@@ -64,6 +71,14 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
               onPress={handleBackPress}
               activeOpacity={0.7}
             >
+              {/*Code Attribution
+                    Title: Expo Vector Icons
+                    Author: Expo Documentation
+                    Date Accessed: 14 October 2025
+                    Date Created: [s.d]
+                    Version: Not specified
+                    Availability: https://docs.expo.dev/guides/icons/
+                */}
               <Ionicons name="arrow-back" size={24} color="#2C3E50" />
             </TouchableOpacity>
             <Text style={styles.headerTitle}>
@@ -82,7 +97,14 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
               </View>
             </TouchableOpacity>
           </View>
-
+          {/*Code Attribution
+                Title: ScrollView
+                Author: React Native Archive
+                Date Accessed: 28 September 2025
+                Date Created: [s.d]
+                Version: Not specified
+                Availability: https://archive.reactnative.dev/docs/scrollview
+            */}
           <ScrollView
             contentContainerStyle={styles.scrollContent}
             showsVerticalScrollIndicator={false}
@@ -150,6 +172,14 @@ export default function ChildMindingCourseDetailScreen({ navigation }) {
               onPress={() => handleNavigation("calc")}
               activeOpacity={0.7}
             >
+              {/*Code Attribution
+                    Title: Expo Vector Icons
+                    Author: Expo Documentation
+                    Date Accessed: 14 October 2025
+                    Date Created: [s.d]
+                    Version: Not specified
+                    Availability: https://docs.expo.dev/guides/icons/
+                */}
               <MaterialCommunityIcons
                 name="calculator"
                 size={24}

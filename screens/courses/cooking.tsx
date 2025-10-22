@@ -94,6 +94,14 @@ export default function CookingCourseDetailScreen({ navigation }) {
             </TouchableOpacity>
           </View>
 
+          {/*Code Attribution
+                Title: ScrollView
+                Author: React Native Archive
+                Date Accessed: 28 September 2025
+                Date Created: [s.d]
+                Version: Not specified
+                Availability: https://archive.reactnative.dev/docs/scrollview
+            */}
           <ScrollView
             contentContainerStyle={styles.scrollContent}
             showsVerticalScrollIndicator={false}
@@ -160,6 +168,14 @@ export default function CookingCourseDetailScreen({ navigation }) {
               onPress={() => handleNavigation("calc")}
               activeOpacity={0.7}
             >
+              {/*Code Attribution
+                    Title: Expo Vector Icons
+                    Author: Expo Documentation
+                    Date Accessed: 14 October 2025
+                    Date Created: [s.d]
+                    Version: Not specified
+                    Availability: https://docs.expo.dev/guides/icons/
+                */}
               <MaterialCommunityIcons
                 name="calculator"
                 size={24}
@@ -417,5 +433,7 @@ const styles = StyleSheet.create({
 - React Native, [s.d]. FlatList. [online]. Available at: < https://reactnative.dev/docs/flatlist > [Accessed date: 14 October 2025].
 
 - React Native Archive, [s.d]. Picker. [online]. Available at:< https://archive.reactnative.dev/docs/picker > [Accessed date: 10 October 2025].
+
+- React Native Archive, [s.d]. ScrollView. [online]. Available at:< https://archive.reactnative.dev/docs/scrollview > [Accessed date: 28 September 2025].
 
 */
