@@ -36,8 +36,8 @@ export default function FirstAidCourseDetailScreen({ navigation }) {
 
   const handleMenuPress = () => {};
 
-  const handleNext = () => {
-    // Navigate to the child minding course screen
+  const handleNext = () => {  
+    // Navigate to the Sewing course screen
 
     navigation.navigate("sewing");
   };
