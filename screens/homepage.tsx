@@ -159,8 +159,10 @@ export default function HomeScreen({ navigation }) {
               onPress={() => handleNavigation("home")}
               activeOpacity={0.7}
             >
-              <Ionicons name="home-outline" size={24} color="#4B5563" />
-              <Text style={styles.navLabel}>Home</Text>
+              <View style={styles.activeNav}>
+                <Ionicons name="home-outline" size={24} color="#fff" />
+                <Text style={{ color: "#fff" }}>Home</Text>
+              </View>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -326,6 +328,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     paddingVertical: 12,
     paddingBottom: 20,
+    borderTopEndRadius: 32,
+    borderTopLeftRadius: 32,
     borderTopWidth: 1,
     borderTopColor: "#E5E7EB",
     shadowColor: "#000",
@@ -348,8 +352,22 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     marginTop: 4,
   },
+  activeNav: {
+    alignItems: "center",
+    backgroundColor: "#004D4D",
+    borderRadius: 20,
+    padding: 12,
+    shadowColor: "#000",
+    color: "#fff",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5, 
+  },
 });
-
 
 /* References:
 

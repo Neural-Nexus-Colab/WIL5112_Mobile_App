@@ -18,10 +18,19 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
     Version: Not specified
     Availability: https://advtechonline.sharepoint.com/:w:/r/sites/TertiaryStudents/_layouts/15/Doc.aspx?sourcedoc=%7BC4AAF478-96AC-4469-8005-F7CDC4A15EBB%7D&file=MAST5112MM.docx&action=default&mobileredirect=true&DefaultItemOpen=1
 */
-interface Course { // Define a Course interface
+interface Course {
+  // Define a Course interface
   name: string;
   price: number;
 }
+/*Code Attribution
+    Title: The Typescript Handbook
+    Author: Typescriptlang
+    Date Accessed: 1 September 2025
+    Date Created: 21 October  2025
+    Version: Not specified
+    Availability: https://www.typescriptlang.org/docs/handbook/intro.html
+*/
 
 export default function CourseFeeCalculationScreen({ navigation }) {
   // Setting state variables for contact information
@@ -29,7 +38,8 @@ export default function CourseFeeCalculationScreen({ navigation }) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
 
-  const [selectedCourses, setSelectedCourses] = useState<{ // Define selectedCourses state
+  const [selectedCourses, setSelectedCourses] = useState<{
+    // Define selectedCourses state
     [key: string]: boolean; // Dynamic keys for course names
   }>({
     "First-Aid": false,
@@ -57,7 +67,7 @@ export default function CourseFeeCalculationScreen({ navigation }) {
   const [vat, setVat] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
 
-/* 
+  /* 
   Code Attribution
   Title: React useEffect Hooks
   Author: W3Schools
@@ -316,12 +326,16 @@ export default function CourseFeeCalculationScreen({ navigation }) {
               onPress={() => handleNavigation("calc")}
               activeOpacity={0.7}
             >
+              <View style={styles.activeNav}>
+
               <MaterialCommunityIcons
                 name="calculator"
                 size={24}
-                color="#4B5563"
+                color="#fff"
               />
-              <Text style={styles.navLabel}>Fees</Text>
+              <Text style={{ color: "#fff" }}>Fees</Text>
+
+              </View>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -578,6 +592,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 6,
   },
+  /* Bottom Navigation */
   bottomNav: {
     position: "absolute",
     bottom: 0,
@@ -587,6 +602,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     paddingVertical: 12,
     paddingBottom: 20,
+    borderTopEndRadius: 32,
+    borderTopLeftRadius: 32,
     borderTopWidth: 1,
     borderTopColor: "#E5E7EB",
     shadowColor: "#000",
@@ -608,6 +625,21 @@ const styles = StyleSheet.create({
     color: "#4B5563",
     fontWeight: "600",
     marginTop: 4,
+  },
+  activeNav: {
+    alignItems: "center",
+    backgroundColor: "#004D4D",
+    borderRadius: 20,
+    padding: 12,
+    shadowColor: "#000",
+    color: "#fff",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
 });
 /* References:
