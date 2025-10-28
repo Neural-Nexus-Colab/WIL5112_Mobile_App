@@ -10,37 +10,19 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-/*Code Attribution
-    Title: Mobile App Scripting (Introduction) [MAST5112]
-    Author: The Independent Institute of Education (Pty) Ltd
-    Date Accessed: 1 September 2025
-    Date Created: 2025
-    Version: Not specified
-    Availability: https://advtechonline.sharepoint.com/:w:/r/sites/TertiaryStudents/_layouts/15/Doc.aspx?sourcedoc=%7BC4AAF478-96AC-4469-8005-F7CDC4A15EBB%7D&file=MAST5112MM.docx&action=default&mobileredirect=true&DefaultItemOpen=1
-*/
+
 interface Course {
-  // Define a Course interface
   name: string;
   price: number;
 }
-/*Code Attribution
-    Title: The Typescript Handbook
-    Author: Typescriptlang
-    Date Accessed: 1 September 2025
-    Date Created: 21 October  2025
-    Version: Not specified
-    Availability: https://www.typescriptlang.org/docs/handbook/intro.html
-*/
 
 export default function CourseFeeCalculationScreen({ navigation }) {
-  // Setting state variables for contact information
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
 
   const [selectedCourses, setSelectedCourses] = useState<{
-    // Define selectedCourses state
-    [key: string]: boolean; // Dynamic keys for course names
+    [key: string]: boolean;
   }>({
     "First-Aid": false,
     Sewing: false,
@@ -67,16 +49,6 @@ export default function CourseFeeCalculationScreen({ navigation }) {
   const [vat, setVat] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
 
-  /* 
-  Code Attribution
-  Title: React useEffect Hooks
-  Author: W3Schools
-  Date Accessed: 17 October 2025
-  Date Created: 2025
-  Version: Not specified
-  Availability: https://www.w3schools.com/react/react_useeffect.asp
-    
-*/
   useEffect(() => {
     calculateFees();
   }, [selectedCourses]);
@@ -91,7 +63,6 @@ export default function CourseFeeCalculationScreen({ navigation }) {
   const calculateFees = () => {
     const selectedCount = Object.values(selectedCourses).filter(Boolean).length;
 
-    // Calculate subtotal
     let subtotal = 0;
     Object.keys(selectedCourses).forEach((courseName) => {
       if (selectedCourses[courseName]) {
@@ -99,7 +70,6 @@ export default function CourseFeeCalculationScreen({ navigation }) {
       }
     });
 
-    // Calculate discount percentage
     let discountPercentage = 0;
     if (selectedCount === 2) discountPercentage = 0.05;
     else if (selectedCount === 3) discountPercentage = 0.1;
@@ -126,6 +96,32 @@ export default function CourseFeeCalculationScreen({ navigation }) {
   };
 
   const handleEnroll = () => {
+    // Check if full name is entered
+    if (!fullName.trim()) {
+      alert("Please enter your full name");
+      return;
+    }
+
+    // Check if phone number is entered
+    if (!phoneNumber.trim()) {
+      alert("Please enter your phone number");
+      return;
+    }
+
+    // Check if email is entered
+    if (!email.trim()) {
+      alert("Please enter your email address");
+      return;
+    }
+
+    // Check if at least one course is selected
+    const hasSelectedCourse = Object.values(selectedCourses).some(Boolean);
+    if (!hasSelectedCourse) {
+      alert("Please select at least one course");
+      return;
+    }
+
+    // All validations passed
     console.log("Ready to Enroll pressed");
     alert("Enrollment process initiated!");
   };
@@ -334,7 +330,6 @@ export default function CourseFeeCalculationScreen({ navigation }) {
                 color="#fff"
               />
               <Text style={{ color: "#fff" }}>Fees</Text>
-
               </View>
             </TouchableOpacity>
 
@@ -592,7 +587,6 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 6,
   },
-  /* Bottom Navigation */
   bottomNav: {
     position: "absolute",
     bottom: 0,
@@ -642,34 +636,3 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
 });
-/* References:
-
-- Expo, 2025. Expo LinearGradient. [online].Available at: < https://docs.expo.dev/versions/latest/sdk/linear-gradient/ > [Accessed date: 1 October 2025].
-
-- Miro, 2025. Mobile App Prototype. [online]. Available at: <https://miro.com/app/board/uXjVJEso5js=/> [Accessed date: 27 September 2025].
-
-- React, 2025. React The library for web and native user interfaces. [onlines]. Available at: < https://react.dev/ > [Accessed date: 27 September 2025].
-
-- React Typescript Cheat sheet, 2025. React Native Cheat Sheet. [online]. Available at: <https://react-typescript-cheatsheet.netlify.app/> [Accessed date: 27 September 2025].
-
-- freeCodeCamp, 2023. TypeScript Handbook for React Developers – How to Build a Type-Safe Todo App. [online]. Available at: < https://www.freecodecamp.org/news/typescript-tutorial-for-react-developers/ > [Accessed date: 27 September 2025].
-
-- Typescriptlag, 2025. The TypeScript Handbook. [online]. Available at: < https://www.typescriptlang.org/docs/handbook/intro.html > [Accessed date: 27 September 2025].
-
-- C# Corner User: Md Sarafaraj, [2023]. FlatList vs SectionList in React Native- Choosing the Right List Component for Your App. [online]. Available at: < https://www.c-sharpcorner.com/article/flatlist-vs-sectionlist-in-react-native-choosing-the-right-list-component-for-y/  > [Accessed date: 17 October 2025].
-
-- React Handbook, [s.d]. Proficiency with the Hooks API. [online]. Available at: < https://reacthandbook.dev/hooks > [Accessed date: 10 October 2025]
-
-- React Navigation, [s.d]. Hello React Navigation. [online]. Available at:< https://reactnavigation.org/docs/hello-react-navigation > [Accessed date: 10 October 2025].
-
-- React Navigation, [s.d]. Configuring the Header Bar. [online]. Available at: < https://reactnavigation.org/docs/headers > [Accessed date: 10 October 2025].
-
-- React Navigation, [s.a]. Nesting Navigators. [online]. Available at: < https://reactnavigation.org/docs/nesting-navigators > [Accessed date: 10 October 2025].
-
-- React Typescript Cheatsheet, [s.d]. Hooks. [online]. Available at:< https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks > [Accessed date: 10 October 2025].
-
-- React Native, [s.d]. FlatList. [online]. Available at: < https://reactnative.dev/docs/flatlist > [Accessed date: 14 October 2025].
-
-- React Native Archive, [s.d]. Picker. [online]. Available at:< https://archive.reactnative.dev/docs/picker > [Accessed date: 10 October 2025].
-
-*/
