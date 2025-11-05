@@ -1,14 +1,14 @@
-import React from 'react';
-import { 
-  View, 
-  Text, 
-  TouchableOpacity, 
+import React from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
   StyleSheet,
   SafeAreaView,
-  ScrollView
-} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+  ScrollView,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 /*Code Attribution
     Title: Mobile App Scripting (Introduction) [MAST5112]
     Author: The Independent Institute of Education (Pty) Ltd
@@ -24,33 +24,36 @@ interface Course {
   price: string;
 }
 
-
-export default function SixMonthCoursesScreen ({ navigation })  {
+export default function SixMonthCoursesScreen({ navigation }) {
   const courses: Course[] = [
     {
-      id: 'firstaid',
-      title: 'First Aid Course',
-      description: 'Essential life-saving skills for emergencies. Learn to handle critical situations effectively.',
-      price: 'R1500'
+      id: "firstaid",
+      title: "First Aid Course",
+      description:
+        "Essential life-saving skills for emergencies. Learn to handle critical situations effectively.",
+      price: "R1500",
     },
     {
-      id: 'sewing',
-      title: 'Sewing Course',
-      description: 'Master professional tailoring skills and garment construction from basic stitching to crocheting.',
-      price: 'R1500'
+      id: "sewing",
+      title: "Sewing Course",
+      description:
+        "Master professional tailoring skills and garment construction from basic stitching to crocheting.",
+      price: "R1500",
     },
     {
-      id: 'land',
-      title: 'Landscaping Course',
-      description: 'Design and maintenance beautiful and functional outdoor and spaces with practical gardening.',
-      price: 'R1500'
+      id: "land",
+      title: "Landscaping Course",
+      description:
+        "Design and maintenance beautiful and functional outdoor and spaces with practical gardening.",
+      price: "R1500",
     },
     {
-      id: 'life',
-      title: 'Life Skills Course',
-      description: 'Develop crucial professional and personal skills for growth, career advancement and for your daily life.',
-      price: 'R1500'
-    }
+      id: "life",
+      title: "Life Skills Course",
+      description:
+        "Develop crucial professional and personal skills for growth, career advancement and for your daily life.",
+      price: "R1500",
+    },
   ];
 
   const handleBackPress = () => {
@@ -58,7 +61,7 @@ export default function SixMonthCoursesScreen ({ navigation })  {
   };
 
   const handleMenuPress = () => {
-    console.log('Menu pressed');
+    console.log("Menu pressed");
     // Open menu drawer or navigate to menu
   };
 
@@ -72,32 +75,17 @@ export default function SixMonthCoursesScreen ({ navigation })  {
   };
 
   return (
-    <LinearGradient
-      colors={['#55c8c2ff', '#C6E2FC']}
-      style={styles.container}
-    >
+    <LinearGradient colors={["#55c8c2ff", "#C6E2FC"]} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.innerContainer}>
           {/* Header */}
           <View style={styles.header}>
-                  <TouchableOpacity
-                    style={styles.backButton}
-                    onPress={handleBackPress}
-                    activeOpacity={0.7}
-                  >
-                    <Ionicons name="arrow-back" size={24} color="#2C3E50" />
-                  </TouchableOpacity>
-
-            <TouchableOpacity 
-              style={styles.menuButton}
-              onPress={handleMenuPress}
+            <TouchableOpacity
+              style={styles.backButton}
+              onPress={handleBackPress}
               activeOpacity={0.7}
             >
-              <View style={styles.menuIcon}>
-                <View style={styles.menuLine} />
-                <View style={styles.menuLine} />
-                <View style={styles.menuLine} />
-              </View>
+              <Ionicons name="arrow-back" size={24} color="#2C3E50" />
             </TouchableOpacity>
           </View>
 
@@ -107,7 +95,7 @@ export default function SixMonthCoursesScreen ({ navigation })  {
           </View>
 
           {/* Courses List */}
-          <ScrollView 
+          <ScrollView
             contentContainerStyle={styles.scrollContent}
             showsVerticalScrollIndicator={false}
           >
@@ -115,16 +103,18 @@ export default function SixMonthCoursesScreen ({ navigation })  {
               <View key={course.id} style={styles.courseCard}>
                 <View style={styles.cardContent}>
                   <Text style={styles.courseTitle}>{course.title}</Text>
-                  <Text style={styles.courseDescription}>{course.description}</Text>
+                  <Text style={styles.courseDescription}>
+                    {course.description}
+                  </Text>
                   <Text style={styles.coursePrice}>{course.price}</Text>
-                  
-                  <TouchableOpacity 
+
+                  <TouchableOpacity
                     style={styles.viewButton}
                     onPress={() => handleViewCourse(course.id, course.title)}
                     activeOpacity={0.85}
                   >
                     <LinearGradient
-                      colors={['#B8860B', '#DAA520']}
+                      colors={["#B8860B", "#DAA520"]}
                       style={styles.buttonGradient}
                       start={{ x: 0, y: 0 }}
                       end={{ x: 1, y: 0 }}
@@ -139,27 +129,31 @@ export default function SixMonthCoursesScreen ({ navigation })  {
 
           {/* Bottom Navigation */}
           <View style={styles.bottomNav}>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.navItem}
-              onPress={() => handleNavigation('home')}
+              onPress={() => handleNavigation("home")}
               activeOpacity={0.7}
             >
               <Ionicons name="home-outline" size={24} color="#4B5563" />
               <Text style={styles.navLabel}>Home</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.navItem}
-              onPress={() => handleNavigation('calc')}
+              onPress={() => handleNavigation("calc")}
               activeOpacity={0.7}
             >
-              <MaterialCommunityIcons name="calculator" size={24} color="#4B5563" />
+              <MaterialCommunityIcons
+                name="calculator"
+                size={24}
+                color="#4B5563"
+              />
               <Text style={styles.navLabel}>Fees</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.navItem}
-              onPress={() => handleNavigation('')}
+              onPress={() => handleNavigation("contact")}
               activeOpacity={0.7}
             >
               <Ionicons name="call-outline" size={24} color="#4B5563" />
@@ -170,7 +164,7 @@ export default function SixMonthCoursesScreen ({ navigation })  {
       </SafeAreaView>
     </LinearGradient>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -183,9 +177,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginTop: 30,
@@ -206,18 +200,6 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-  menuButton: {
-    padding: 10,
-  },
-  menuIcon: {
-    gap: 5,
-  },
-  menuLine: {
-    width: 25,
-    height: 3,
-    backgroundColor: "#2C3E50",
-    borderRadius: 2,
-  },
   titleContainer: {
     paddingHorizontal: 32,
     paddingVertical: 20,
@@ -225,8 +207,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 36,
-    fontWeight: 'bold',
-    color: '#2C3E50',
+    fontWeight: "bold",
+    color: "#2C3E50",
   },
   scrollContent: {
     paddingHorizontal: 20,
@@ -234,10 +216,10 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
   },
   courseCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderRadius: 16,
     marginBottom: 24,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 4,
@@ -246,33 +228,33 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 6,
     borderLeftWidth: 6,
-    borderLeftColor: '#16697A',
+    borderLeftColor: "#16697A",
   },
   cardContent: {
     padding: 24,
   },
   courseTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#2C3E50',
+    fontWeight: "bold",
+    color: "#2C3E50",
     marginBottom: 12,
   },
   courseDescription: {
     fontSize: 15,
-    color: '#4B5563',
+    color: "#4B5563",
     lineHeight: 22,
     marginBottom: 16,
   },
   coursePrice: {
     fontSize: 28,
-    fontWeight: 'bold',
-    color: '#B8860B',
+    fontWeight: "bold",
+    color: "#B8860B",
     marginBottom: 20,
   },
   viewButton: {
     borderRadius: 25,
-    overflow: 'hidden',
-    shadowColor: '#B8860B',
+    overflow: "hidden",
+    shadowColor: "#B8860B",
     shadowOffset: {
       width: 0,
       height: 3,
@@ -284,25 +266,27 @@ const styles = StyleSheet.create({
   buttonGradient: {
     paddingVertical: 14,
     paddingHorizontal: 32,
-    alignItems: 'center',
+    alignItems: "center",
   },
   viewButtonText: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   bottomNav: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    flexDirection: 'row',
-    backgroundColor: '#FFFFFF',
+    flexDirection: "row",
+    backgroundColor: "#FFFFFF",
     paddingVertical: 12,
+    borderTopEndRadius: 32,
+    borderTopLeftRadius: 32,
     paddingBottom: 20,
     borderTopWidth: 1,
-    borderTopColor: '#E5E7EB',
-    shadowColor: '#000',
+    borderTopColor: "#E5E7EB",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: -2,
@@ -313,8 +297,8 @@ const styles = StyleSheet.create({
   },
   navItem: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   navIcon: {
     fontSize: 24,
@@ -322,8 +306,8 @@ const styles = StyleSheet.create({
   },
   navLabel: {
     fontSize: 12,
-    color: '#4B5563',
-    fontWeight: '600',
+    color: "#4B5563",
+    fontWeight: "600",
   },
 });
 /* References:

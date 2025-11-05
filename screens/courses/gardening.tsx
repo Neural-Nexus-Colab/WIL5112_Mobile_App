@@ -80,18 +80,6 @@ export default function GardenMaintenanceDetailScreen({ navigation }) {
             <Text style={styles.headerTitle}>
               Explore the{"\n"}Garden Maintenance Course
             </Text>
-
-            <TouchableOpacity
-              style={styles.menuButton}
-              onPress={handleMenuPress}
-              activeOpacity={0.7}
-            >
-              <View style={styles.menuIcon}>
-                <View style={styles.menuLine} />
-                <View style={styles.menuLine} />
-                <View style={styles.menuLine} />
-              </View>
-            </TouchableOpacity>
           </View>
           {/*Code Attribution
                 Title: ScrollView
@@ -245,18 +233,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 10,
   },
-  menuButton: {
-    padding: 10,
-  },
-  menuIcon: {
-    gap: 5,
-  },
-  menuLine: {
-    width: 25,
-    height: 3,
-    backgroundColor: "#2C3E50",
-    borderRadius: 2,
-  },
   scrollContent: {
     paddingHorizontal: 20,
     paddingBottom: 100,
@@ -377,6 +353,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     paddingVertical: 12,
     paddingBottom: 20,
+    borderTopEndRadius: 32,
+    borderTopLeftRadius: 32,
     borderTopWidth: 1,
     borderTopColor: "#E5E7EB",
     shadowColor: "#000",

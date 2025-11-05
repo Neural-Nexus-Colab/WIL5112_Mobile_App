@@ -60,9 +60,6 @@ export default function ContactUsScreen({ navigation }) {
     navigation.navigate("home");
   };
 
-  const handleMenuPress = () => {
-    console.log("Menu pressed");
-  };
 
   const handleNavigation = (screen: string) => {
     navigation.navigate(screen);
@@ -84,17 +81,7 @@ export default function ContactUsScreen({ navigation }) {
 
             <Text style={styles.headerTitle}>Contact Us</Text>
 
-            <TouchableOpacity
-              style={styles.menuButton}
-              onPress={handleMenuPress}
-              activeOpacity={0.7}
-            >
-              <View style={styles.menuIcon}>
-                <View style={styles.menuLine} />
-                <View style={styles.menuLine} />
-                <View style={styles.menuLine} />
-              </View>
-            </TouchableOpacity>
+  
           </View>
 
           <ScrollView
@@ -247,18 +234,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginHorizontal: 10,
   },
-  menuButton: {
-    padding: 10,
-  },
-  menuIcon: {
-    gap: 5,
-  },
-  menuLine: {
-    width: 25,
-    height: 3,
-    backgroundColor: "#2C3E50",
-    borderRadius: 2,
-  },
+
   scrollContent: {
     paddingHorizontal: 20,
     paddingBottom: 100,

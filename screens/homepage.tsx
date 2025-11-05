@@ -19,11 +19,6 @@ import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
     Availability: https://advtechonline.sharepoint.com/:w:/r/sites/TertiaryStudents/_layouts/15/Doc.aspx?sourcedoc=%7BC4AAF478-96AC-4469-8005-F7CDC4A15EBB%7D&file=MAST5112MM.docx&action=default&mobileredirect=true&DefaultItemOpen=1
 */
 export default function HomeScreen({ navigation }) {
-  const handleMenuPress = () => {
-    console.log("Menu pressed");
-    // Open menu drawer
-  };
-
   const handleNavigation = (screen: string) => {
     navigation.navigate(screen);
   };
@@ -36,21 +31,6 @@ export default function HomeScreen({ navigation }) {
             contentContainerStyle={styles.scrollContent}
             showsVerticalScrollIndicator={false}
           >
-            {/* Header with Logo and Menu */}
-            <View style={styles.headerContainer}>
-              <TouchableOpacity
-                style={styles.menuButton}
-                onPress={handleMenuPress}
-                activeOpacity={0.7}
-              >
-                <View style={styles.menuIcon}>
-                  <View style={styles.menuLine} />
-                  <View style={styles.menuLine} />
-                  <View style={styles.menuLine} />
-                </View>
-              </TouchableOpacity>
-            </View>
-
             {/* Logo Section */}
             <View style={styles.logoContainer}>
               <View style={styles.logoCircle}>
@@ -214,18 +194,6 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     marginTop: 30,
   },
-  menuButton: {
-    padding: 10,
-  },
-  menuIcon: {
-    gap: 6,
-  },
-  menuLine: {
-    width: 30,
-    height: 3,
-    backgroundColor: "#2C3E50",
-    borderRadius: 2,
-  },
   logoContainer: {
     alignItems: "center",
     marginTop: 20,
@@ -293,6 +261,7 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     paddingHorizontal: 30,
     gap: 16,
+    marginBottom: 20,
   },
   navButton: {
     borderRadius: 12,

@@ -90,11 +90,6 @@ export default function CourseFeeCalculationScreen({ navigation }) {
   const handleBackPress = () => {
     navigation.navigate("home");
   };
-
-  const handleMenuPress = () => {
-    console.log("Menu pressed");
-  };
-
   const handleEnroll = () => {
     // Check if full name is entered
     if (!fullName.trim()) {
@@ -151,18 +146,6 @@ export default function CourseFeeCalculationScreen({ navigation }) {
               activeOpacity={0.7}
             >
               <Ionicons name="arrow-back" size={24} color="#2C3E50" />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.menuButton}
-              onPress={handleMenuPress}
-              activeOpacity={0.7}
-            >
-              <View style={styles.menuIcon}>
-                <View style={styles.menuLine} />
-                <View style={styles.menuLine} />
-                <View style={styles.menuLine} />
-              </View>
             </TouchableOpacity>
           </View>
 
@@ -381,18 +364,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
-  },
-  menuButton: {
-    padding: 10,
-  },
-  menuIcon: {
-    gap: 5,
-  },
-  menuLine: {
-    width: 25,
-    height: 3,
-    backgroundColor: "#2C3E50",
-    borderRadius: 2,
   },
   titleContainer: {
     paddingHorizontal: 32,
