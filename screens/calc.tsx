@@ -116,14 +116,14 @@ export default function CourseFeeCalculationScreen({ navigation }) {
       return;
     }
 
-
     alert(
-          `Registration Successful!\n\n` +
-            `Name: ${fullName}\n` +
-            `Email: ${email}\n` +
-            `Phone: ${phoneNumber}\n\n` +
-            `Total Cost: ${totalAmount}\n\n` +
-            `Thank you for registering with Empowering the Nation!`);
+      `Registration Successful!\n\n` +
+        `Name: ${fullName}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${phoneNumber}\n\n` +
+        `Total Cost: ${totalAmount}\n\n` +
+        `Thank you for registering with Empowering the Nation!`
+    );
   };
 
   const handleNavigation = (screen: string) => {
@@ -311,13 +311,12 @@ export default function CourseFeeCalculationScreen({ navigation }) {
               activeOpacity={0.7}
             >
               <View style={styles.activeNav}>
-
-              <MaterialCommunityIcons
-                name="calculator"
-                size={24}
-                color="#fff"
-              />
-              <Text style={{ color: "#fff" }}>Fees</Text>
+                <MaterialCommunityIcons
+                  name="calculator"
+                  size={24}
+                  color="#fff"
+                />
+                <Text style={{ color: "#fff" }}>Fees</Text>
               </View>
             </TouchableOpacity>
 
