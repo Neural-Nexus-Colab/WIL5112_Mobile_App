@@ -116,9 +116,14 @@ export default function CourseFeeCalculationScreen({ navigation }) {
       return;
     }
 
-    // All validations passed
-    console.log("Ready to Enroll pressed");
-    alert("Enrollment process initiated!");
+
+    alert(
+          `Registration Successful!\n\n` +
+            `Name: ${fullName}\n` +
+            `Email: ${email}\n` +
+            `Phone: ${phoneNumber}\n\n` +
+            `Total Cost: ${totalAmount}\n\n` +
+            `Thank you for registering with Empowering the Nation!`);
   };
 
   const handleNavigation = (screen: string) => {
