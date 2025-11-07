@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Alert
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 /*Code Attribution
@@ -25,10 +26,29 @@ export default function LoginScreen({ navigation }) {
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = () => {
-    console.log("Login pressed", { email, password, rememberMe });
-    navigation.navigate("home");
-  };
+const handleLogin = () => {
+  // Validate email - cannot be empty
+  if (!email.trim()) {
+    Alert.alert('Error: ', 'Email address is required');
+    return;
+  }
+  
+  // Validate email - must contain @
+  if (!email.includes('@')) {
+     Alert.alert('Error: ','Please enter a valid email address');
+    return;
+  }
+  
+  // Validate password - cannot be empty
+  if (!password || password.length < 8) {
+     Alert.alert('Error: ', 'Invalid password. Must be at least 8 characters long.');
+    return;
+  }
+  
+  // If all validations pass, proceed with login
+ 
+  navigation.navigate("home");
+};
 
   const handleSignUp = () => {
     navigation.navigate("Signup");
@@ -36,7 +56,6 @@ export default function LoginScreen({ navigation }) {
 
   const handleSocialLogin = (platform: string) => {
     console.log(`Login with ${platform}`);
-    // Add social login logic here
   };
 
   return (

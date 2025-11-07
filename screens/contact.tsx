@@ -17,6 +17,8 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
     Version: Not specified
     Availability: https://advtechonline.sharepoint.com/:w:/r/sites/TertiaryStudents/_layouts/15/Doc.aspx?sourcedoc=%7BC4AAF478-96AC-4469-8005-F7CDC4A15EBB%7D&file=MAST5112MM.docx&action=default&mobileredirect=true&DefaultItemOpen=1
 */
+
+// defining a typescript interface for contact locations
 interface ContactLocation {
   id: string;
   name: string;
@@ -27,9 +29,9 @@ interface ContactLocation {
 }
 
 export default function ContactUsScreen({ navigation }) {
-  const [privacyEnabled, setPrivacyEnabled] = useState(true);
+  const [privacyEnabled, setPrivacyEnabled] = useState(true); // setting the state for privacy
 
-  const locations: ContactLocation[] = [
+  const locations: ContactLocation[] = [ //setting the predefined values for the locations with the contactlocations interface
     {
       id: "1",
       name: "Johannesburg West",
@@ -56,13 +58,12 @@ export default function ContactUsScreen({ navigation }) {
     },
   ];
 
-  const handleBackPress = () => {
-    navigation.navigate("home");
+  const handleBackPress = () => { // Navigation handler to return home
+    navigation.navigate("home"); // navigates back to the home screen
   };
 
-
-  const handleNavigation = (screen: string) => {
-    navigation.navigate(screen);
+  const handleNavigation = (screen: string) => {  //  navigation handler for bottom navigation bar
+    navigation.navigate(screen); 
   };
 
   return (
@@ -80,8 +81,6 @@ export default function ContactUsScreen({ navigation }) {
             </TouchableOpacity>
 
             <Text style={styles.headerTitle}>Contact Us</Text>
-
-  
           </View>
 
           <ScrollView
