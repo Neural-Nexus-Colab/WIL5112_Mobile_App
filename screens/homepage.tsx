@@ -369,3 +369,4 @@ const styles = StyleSheet.create({
 - React Native Archive, [s.d]. Picker. [online]. Available at:< https://archive.reactnative.dev/docs/picker > [Accessed date: 10 October 2025].
 
 */
+
